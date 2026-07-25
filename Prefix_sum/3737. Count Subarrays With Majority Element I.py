@@ -7,7 +7,7 @@ target 出现次数 > 子数组长度 / 2
 from typing import List
 
 
-class Solution:
+class Count_majority_element_version1:
     def countMajoritySubarrays(self, nums: List[int], target: int) -> int:
         result = 0
         n = len(nums)
