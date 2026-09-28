@@ -7,4 +7,4 @@ class Solution:
                 num = num // 10
             return total
 
-        return next((i for i in range(len(nums)) if i == get_digit_num(nums[i])), -1)
+        return next((i for i in range(len(nums)) if i == get_digit_num(nums[i])), -1) 
