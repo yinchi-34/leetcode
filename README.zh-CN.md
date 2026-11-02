@@ -1,5 +1,9 @@
 # leetcode-go
 
+[![Go](https://img.shields.io/badge/Go-1.22-00ADD8?logo=go&logoColor=white)](go.mod)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
+[![Docs: CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey)](LICENSE-docs)
+
 [English](README.md) | 简体中文
 
 用 Go 刷 LeetCode 的代码与学习笔记，按算法和数据结构分类整理。题解记录：
@@ -9,7 +13,7 @@
 - **难在哪里**：分别评价建模、知识门槛、正确性论证和实现的难度，说明各项评分的理由。
 - **能迁移到哪里**：提炼可以用于其他题目的方法，以及方法适用的条件。
 
-题解逐步补充，部分题目目前只有代码和测试，或只有一种语言的题解。
+完整列表见[题目总表](docs/PROBLEMS.zh-CN.md)。
 
 ## 如何阅读一道题
 
@@ -32,6 +36,9 @@
 
 可以从[算法分类](Algorithms/)、[数据结构分类](data-structures/)或[入门练习](primers/)开始浏览。
 
+<details>
+<summary>展开完整目录树</summary>
+
 ```text
 .
 ├── Algorithms/                  # 按算法分类的题目
@@ -49,16 +56,20 @@
 │   ├── RATING.zh-CN.md          # 中文难度评分标准
 │   ├── CLRS_INDEX.md            # 英文 CLRS 反查索引
 │   ├── CLRS_INDEX.zh-CN.md      # 中文 CLRS 反查索引
-│   ├── GLOSSARY.md             # 中英文全局术语表
-│   ├── GITHUB_MATH.md          # GitHub 数学书写规范
-│   ├── PROMPT.zh-CN.md         # 题解写作提示词
-│   └── investigations/         # 排查记录
+│   ├── PROBLEMS.md              # 英文题目总表
+│   ├── PROBLEMS.zh-CN.md        # 中文题目总表
+│   ├── GLOSSARY.md              # 中英文全局术语表
+│   ├── GITHUB_MATH.md           # GitHub 数学书写规范
+│   ├── PROMPT.zh-CN.md          # 题解写作提示词
+│   └── investigations/          # 排查记录
 │       ├── README.md
 │       ├── README.zh-CN.md
 │       └── github-math-rendering-investigation.md
 ├── README.md
 └── README.zh-CN.md
 ```
+
+</details>
 
 ## 运行测试
 
@@ -77,7 +88,7 @@ go test ./Algorithms/greedy-algorithms/...
 2. 编写 `solution.go` 和 `solution_test.go`，两者统一使用 `package solution`，测试题目示例、边界条件与算法的关键分支。
 3. 整理题解时，将[中文模板](templates/summary.zh-CN.md)和[英文模板](templates/summary.md)复制到题目目录。将其中的 `../docs/` 改为 `../../../docs/`，再替换占位内容，并删除开头注释中的复制说明。
 4. 按[评分标准](docs/RATING.zh-CN.md)评价解法，写明约束和目标复杂度。中英文版本的事实、评分与数学含义应保持一致。
-5. 对照[全局术语表](docs/GLOSSARY.md)检查术语，按 [GitHub 数学书写规范](docs/GITHUB_MATH.md)检查数学记号，同步更新 [CLRS 反查索引](docs/CLRS_INDEX.zh-CN.md)，确认相对链接有效，并运行 `go test ./...`。
+5. 对照[全局术语表](docs/GLOSSARY.md)检查术语，按 [GitHub 数学书写规范](docs/GITHUB_MATH.md)检查数学记号，同步更新[题目总表](docs/PROBLEMS.zh-CN.md)和 [CLRS 反查索引](docs/CLRS_INDEX.zh-CN.md)，确认相对链接有效，并运行 `go test ./...`。
 
 ## 文档约定
 

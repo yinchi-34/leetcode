@@ -1,5 +1,9 @@
 # leetcode-go
 
+[![Go](https://img.shields.io/badge/Go-1.22-00ADD8?logo=go&logoColor=white)](go.mod)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
+[![Docs: CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey)](LICENSE-docs)
+
 English | [简体中文](README.zh-CN.md)
 
 Go solutions and learning notes for LeetCode, organized by algorithm and data structure. The problem notes record:
@@ -9,7 +13,7 @@ Go solutions and learning notes for LeetCode, organized by algorithm and data st
 - **Where the difficulty lies**: separate ratings for modeling, knowledge prerequisites, correctness reasoning, and implementation, with reasons for each score.
 - **What transfers to other problems**: reusable methods and the conditions under which they apply.
 
-Notes are added gradually. Some problems currently have only code and tests, or notes in one language.
+See the [problem index](docs/PROBLEMS.md) for the full list.
 
 ## Reading a Problem
 
@@ -32,6 +36,9 @@ The four-dimensional rating evaluates **a specific solution under stated constra
 
 Browse [algorithms](Algorithms/), [data structures](data-structures/), or [introductory exercises](primers/).
 
+<details>
+<summary>Show the full directory tree</summary>
+
 ```text
 .
 ├── Algorithms/                  # Problems grouped by algorithm
@@ -49,16 +56,20 @@ Browse [algorithms](Algorithms/), [data structures](data-structures/), or [intro
 │   ├── RATING.zh-CN.md          # Rating criteria in Chinese
 │   ├── CLRS_INDEX.md            # CLRS reverse index in English
 │   ├── CLRS_INDEX.zh-CN.md      # CLRS reverse index in Chinese
-│   ├── GLOSSARY.md             # Shared Chinese–English glossary
-│   ├── GITHUB_MATH.md          # GitHub math conventions
-│   ├── PROMPT.zh-CN.md         # Prompt for writing summaries (Chinese)
-│   └── investigations/         # Investigation records
+│   ├── PROBLEMS.md              # Problem index in English
+│   ├── PROBLEMS.zh-CN.md        # Problem index in Chinese
+│   ├── GLOSSARY.md              # Shared Chinese–English glossary
+│   ├── GITHUB_MATH.md           # GitHub math conventions
+│   ├── PROMPT.zh-CN.md          # Prompt for writing summaries (Chinese)
+│   └── investigations/          # Investigation records
 │       ├── README.md
 │       ├── README.zh-CN.md
 │       └── github-math-rendering-investigation.md
 ├── README.md
 └── README.zh-CN.md
 ```
+
+</details>
 
 ## Running Tests
 
@@ -77,7 +88,7 @@ The first command tests all packages; the second tests one category.
 2. Add `solution.go` and `solution_test.go`, both using `package solution`. Test the examples, boundary cases, and cases that exercise the key branches of the algorithm.
 3. When writing notes, copy the [English template](templates/summary.md) and [Chinese template](templates/summary.zh-CN.md) into the problem directory. Change `../docs/` to `../../../docs/` in the copied files, then replace the placeholders and remove the copying instructions in the opening comment.
 4. Rate the solution using the [rating criteria](docs/RATING.md), stating its constraints and target complexity. Keep the facts, scores, and mathematical meaning consistent between the two languages.
-5. Check terminology against the [shared glossary](docs/GLOSSARY.md) and mathematical notation against the [GitHub math conventions](docs/GITHUB_MATH.md). Update the [CLRS index](docs/CLRS_INDEX.md), verify the relative links, and run `go test ./...`.
+5. Check terminology against the [shared glossary](docs/GLOSSARY.md) and mathematical notation against the [GitHub math conventions](docs/GITHUB_MATH.md). Update the [problem index](docs/PROBLEMS.md) and the [CLRS index](docs/CLRS_INDEX.md), verify the relative links, and run `go test ./...`.
 
 ## Documentation Conventions
 
