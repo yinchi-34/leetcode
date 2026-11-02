@@ -25,6 +25,7 @@
 | [118. 杨辉三角](../Algorithms/simulation/0118-pascals-triangle/summary.zh-CN.md) | 直接对应 | 用“前 $`i`$ 行已正确”的外层循环不变式，按初始化、保持、终止三步证明 |
 | [3644. 排序排列](../Algorithms/bit-manipulation/3644-maximum-k-to-sort-a-permutation/summary.zh-CN.md) | 直接对应 | 用“`res` 是前缀中支撑集元素的按位与”的不变式，按初始化、保持、终止三步证明代码算出 $`M`$ |
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | 引理 1 的内层不变式与外层“`res` 是已处理段首的最大段长”的不变式，都按初始化、保持、终止三步证明 |
+| [453. 最小操作次数使数组元素相等](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.zh-CN.md) | 直接对应 | 解法一用“前缀相等、后缀从未被跳过”的不变式，按初始化、保持、终止三步证明 |
 
 ## 第 3 章 函数的增长
 
@@ -57,6 +58,12 @@
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | 内层 `while` 的总执行次数为 $`m - (\text{段首个数}) \le m`$，不逐次估计 |
+
+### §17.3 势能法
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [453. 最小操作次数使数组元素相等](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.zh-CN.md) | 相关思想 | 用 $`\Phi = \sum x_i - n \cdot \min x`$ 刻画状态，界定每步 $`\Delta\Phi \ge -1`$ 得到步数下界；这里用于证明下界，不是做摊还分析 |
 
 ## 附录 C 计数与概率
 
