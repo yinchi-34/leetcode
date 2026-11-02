@@ -25,6 +25,7 @@ Each section gets one table:
 | [118. Pascal's Triangle](../Algorithms/simulation/0118-pascals-triangle/summary.md) | Direct | Proves correctness with the outer-loop invariant "the first $`i`$ rows are correct" in the initialization, maintenance, and termination steps |
 | [3644. Maximum K to Sort a Permutation](../Algorithms/bit-manipulation/3644-maximum-k-to-sort-a-permutation/summary.md) | Direct | Proves the code computes $`M`$ with the invariant "`res` is the AND of the support elements in the prefix" in the initialization, maintenance, and termination steps |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Lemma 1's inner invariant and the outer invariant "`res` is the longest run among processed heads" are each proved by initialization, maintenance, and termination |
+| [453. Minimum Moves to Equal Array Elements](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.md) | Direct | Solution 1 is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
 
 ## Chapter 3 Growth of Functions
 
@@ -57,6 +58,12 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | The inner `while` runs $`m - (\text{number of heads}) \le m`$ times in total, counted over the whole algorithm rather than per loop |
+
+### §17.3 The potential method
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [453. Minimum Moves to Equal Array Elements](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.md) | Related idea | The state is measured by $`\Phi = \sum x_i - n \cdot \min x`$, and bounding $`\Delta\Phi \ge -1`$ per move yields the lower bound; here it proves a lower bound rather than performing amortized analysis |
 
 ## Appendix C Counting and Probability
 

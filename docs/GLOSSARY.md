@@ -21,3 +21,5 @@
 | 极大连续段 | maximal run | 整数集合 $`S`$ 的子集 $`\{h, \ldots, h+L-1\}`$，满足 $`h-1 \notin S`$ 且 $`h+L \notin S`$，两端都不能再延长。 |
 | 段首 | run head | 满足 $`h \in S`$ 且 $`h-1 \notin S`$ 的值 $`h`$，即某个极大连续段的最小元素。 |
 | 聚合分析 | aggregate analysis | 先界定 $`n`$ 个操作的总代价 $`T(n)`$，再以 $`T(n)/n`$ 作为每个操作摊还代价的分析方法。 |
+| 势函数 | potential function | 把状态映射为实数的函数；通过界定每步操作引起的变化量来证明步数或代价的界。 |
+| 平移不变性 | translation invariance | 性质 $`P`$ 满足：对任意常数 $`t`$，$`P(x)`$ 成立当且仅当 $`P(x + t\mathbf{1})`$ 成立，其中 $`\mathbf{1}`$ 为全 1 向量。 |
