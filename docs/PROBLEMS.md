@@ -2,7 +2,7 @@
 
 English | [简体中文](PROBLEMS.zh-CN.md)
 
-16 problems, 9 of them with notes in both languages. Ratings are **modeling / knowledge prerequisites / correctness reasoning / implementation**, each from 1 to 5; see the [rating criteria](RATING.md). Problem 3619 has two solutions, rated on separate lines (recursive DFS, then explicit-stack DFS). When adding a problem, update this table.
+17 problems, 10 of them with notes in both languages. Ratings are **modeling / knowledge prerequisites / correctness reasoning / implementation**, each from 1 to 5; see the [rating criteria](RATING.md). Problems 3619 and 453 have two solutions each, rated on separate lines (3619: recursive DFS, then explicit-stack DFS; 453: batched simulation, then formula). When adding a problem, update this table.
 
 | # | Problem | Category | Difficulty | zerotrac | Ratings | Notes |
 | :-: | --- | --- | --- | :-: | :-: | --- |
@@ -15,6 +15,7 @@ English | [简体中文](PROBLEMS.zh-CN.md)
 | 1541 | [Minimum Insertions to Balance a Parentheses String](../Algorithms/greedy-algorithms/1541-minimum-insertions-to-balance-a-parentheses-string/) | Greedy | 🟡 Medium | 1759 | 3 / 2 / 3 / 3 | [中文](../Algorithms/greedy-algorithms/1541-minimum-insertions-to-balance-a-parentheses-string/summary.zh-CN.md) · [English](../Algorithms/greedy-algorithms/1541-minimum-insertions-to-balance-a-parentheses-string/summary.md) |
 | 3727 | [Maximum Alternating Sum of Squares](../Algorithms/greedy-algorithms/3727-maximum-alternating-sum-of-squares/) | Greedy | 🟡 Medium | 1455 | 2 / 1 / 2 / 1 | [中文](../Algorithms/greedy-algorithms/3727-maximum-alternating-sum-of-squares/summary.zh-CN.md) · [English](../Algorithms/greedy-algorithms/3727-maximum-alternating-sum-of-squares/summary.md) |
 | 0118 | [Pascal's Triangle](../Algorithms/simulation/0118-pascals-triangle/) | Simulation | 🟢 Easy | — | 1 / 1 / 2 / 2 | [中文](../Algorithms/simulation/0118-pascals-triangle/summary.zh-CN.md) · [English](../Algorithms/simulation/0118-pascals-triangle/summary.md) |
+| 0453 | [Minimum Moves to Equal Array Elements](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/) | Simulation | 🟡 Medium | — | 3 / 2 / 3 / 2<br>4 / 1 / 3 / 1 | [中文](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.zh-CN.md) · [English](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.md) |
 | 1021 | [Remove Outermost Parentheses](../Algorithms/simulation/1021-remove-outermost-parentheses/) | Simulation | 🟢 Easy | 1311 | 2 / 1 / 2 / 2 | [中文](../Algorithms/simulation/1021-remove-outermost-parentheses/summary.zh-CN.md) · [English](../Algorithms/simulation/1021-remove-outermost-parentheses/summary.md) |
 | 4088 | [Difference Between Peaks and Valleys](../Algorithms/simulation/4088-difference-between-peaks-and-valleys/) | Simulation | — | — | — | Code only |
 | 0128 | [Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/) | Hash Table | 🟡 Medium | — | 3 / 2 / 3 / 2 | [中文](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) · [English](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) |
