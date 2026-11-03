@@ -27,6 +27,7 @@ Each section gets one table:
 | [49. Group Anagrams (sorted key)](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.md) | Direct | Lemma 2 uses the invariant "the key set and each group match exactly the first $`i`$ strings", proved by initialization, maintenance, and termination, to show each string lands in exactly one group |
 | [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | Lemma 3 uses the invariant "`cnt` holds the letter counts of the prefix", proved by initialization, maintenance, and termination, to show the counts are correct |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Lemma 1's inner invariant and the outer invariant "`res` is the longest run among processed heads" are each proved by initialization, maintenance, and termination |
+| [146. LRU Cache](../data-structures/hash-table/0146-lru-cache/summary.md) | Related idea | The representation invariant follows the initialization–maintenance–termination structure, with maintenance taken over each operation rather than each loop iteration |
 | [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Direct | The batched simulation is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
 
 ## Chapter 3 Growth of Functions
@@ -85,6 +86,12 @@ Each section gets one table:
 
 ## Chapter 10 Elementary Data Structures
 
+### §10.2 Linked lists
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [146. LRU Cache](../data-structures/hash-table/0146-lru-cache/summary.md) | Direct | `remove` and `pushFront` are LIST-DELETE' and LIST-INSERT' with a sentinel, and the tail is `L.nil.prev` |
+
 ### §10.4 Representing rooted trees
 
 | Problem | Relation | How It Appears Here |
@@ -106,6 +113,7 @@ Each section gets one table:
 | [49. Group Anagrams (sorted key)](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.md) | Direct | `groups` is keyed by the sorted string; each string costs one lookup and one append, expected $`O(\ell_i)`$ |
 | [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | `groups` is keyed by `[26]int`; each string costs one lookup and one append, expected $`O(\lvert\Sigma\rvert)`$ |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Insertion and membership queries on `numSet` take expected $`O(1)`$, which the overall expected $`O(n)`$ relies on |
+| [146. LRU Cache](../data-structures/hash-table/0146-lru-cache/summary.md) | Direct | Lookup, insertion, and deletion in `nodes` take expected $`O(1)`$, which the expected $`O(1)`$ per operation relies on; the section notes that a doubly linked list deletes a given element in $`O(1)`$, and the hash table here turns a key into that element |
 
 ## Chapter 12 Binary Search Trees
 
