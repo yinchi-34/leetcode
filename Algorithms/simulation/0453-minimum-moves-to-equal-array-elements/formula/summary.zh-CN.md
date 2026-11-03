@@ -229,6 +229,7 @@ x^{(t+1)} = x^{(t)} + \mathbf{1} - e_{j_t} = \bigl(y^{(t)} - e_{j_t}\bigr) + (t+
 ## 8. 关联题目（Related Problems）
 
 - [462. Minimum Moves to Equal Array Elements II](https://leetcode.cn/problems/minimum-moves-to-equal-array-elements-ii/) — 每次只让一个数加 1 或减 1，可以往两个方向走，目标不再被单调性固定在最小值，而要选中位数。
+- [3736. Minimum Moves to Equal Array Elements III](https://leetcode.cn/problems/minimum-moves-to-equal-array-elements-iii/) — 每次只让一个数加 1，取负后就是本文的等价问题“每次让一个数减 1”，答案是 $`n \cdot \max a - \sum a_i`$，见[该题题解](../../3736-minimum-moves-to-equal-array-elements-iii/summary.zh-CN.md)。
 
 ---
 

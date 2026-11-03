@@ -229,6 +229,7 @@ Chapter numbers follow the third edition of CLRS. "Relation" is either "Direct" 
 ## 8. Related Problems
 
 - [462. Minimum Moves to Equal Array Elements II](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/) — each move adds or subtracts 1 from a single element, so values can move in both directions; the target is no longer pinned to the minimum by monotonicity and must be chosen as a median.
+- [3736. Minimum Moves to Equal Array Elements III](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii/) — each move adds 1 to one element; negated, it is this note's equivalent problem "subtract 1 from one", with answer $`n \cdot \max a - \sum a_i`$; see [its notes](../../3736-minimum-moves-to-equal-array-elements-iii/summary.md).
 
 ---
 
