@@ -73,6 +73,14 @@
 |---|---|---|
 | [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 相关思想 | 本实现最坏 $`O(n^2)`$；若需要最坏 $`O(n)`$，可改用中位数的中位数选主元 |
 
+## 第 10 章 基本数据结构
+
+### §10.4 有根树的表示
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [104. 二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) | 直接对应 | `TreeNode` 的 `Left`、`Right` 指针就是 CLRS 中结点的 left、right 属性，空孩子 `nil` 对应 NIL |
+
 ## 第 11 章 散列表
 
 ### §11.2 散列表
@@ -80,6 +88,14 @@
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | `numSet` 的插入与存在性查询期望 $`O(1)`$，是整体期望 $`O(n)`$ 的前提 |
+
+## 第 12 章 二叉搜索树
+
+### §12.1 什么是二叉搜索树
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [104. 二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) | 相关思想 | INORDER-TREE-WALK 对每个结点调用一次，定理 12.1 证明其时间为 $`\Theta(n)`$；4.5 用同样的“每个结点一次非空调用”的方式数调用次数，只是本题按后序合并子树结果 |
 
 ## 第 15 章 动态规划
 
@@ -102,6 +118,14 @@
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [453. 最小操作次数使数组元素相等（成批模拟）](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md) | 相关思想 | 用 $`\Phi = \sum x_i - n \cdot \min x`$ 刻画状态，界定每步 $`\Delta\Phi \ge -1`$ 得到步数下界；这里用于证明下界，不是做摊还分析 |
+
+## 附录 B 集合等离散数学内容
+
+### B.5 树
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [104. 二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) | 直接对应 | 难点二：CLRS 按边数定义深度和树高，本题按结点数计，非空树上答案等于 CLRS 树高加 1 |
 
 ## 附录 C 计数与概率
 

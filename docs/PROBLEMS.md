@@ -2,7 +2,7 @@
 
 English | [简体中文](PROBLEMS.zh-CN.md)
 
-18 problems, 11 of them with notes in both languages. Ratings are **modeling / knowledge prerequisites / correctness reasoning / implementation**, each from 1 to 5; see the [rating criteria](RATING.md). Problems with several solutions are rated on separate lines (3619: recursive DFS, then explicit-stack DFS; 453: batched simulation, then formula; 462: sorting, then three-way quickselect, then two-way quickselect). When adding a problem, update this table.
+19 problems, 12 of them with notes in both languages. Ratings are **modeling / knowledge prerequisites / correctness reasoning / implementation**, each from 1 to 5; see the [rating criteria](RATING.md). Problems with several solutions are rated on separate lines (3619: recursive DFS, then explicit-stack DFS; 453: batched simulation, then formula; 462: sorting, then three-way quickselect, then two-way quickselect). When adding a problem, update this table.
 
 | # | Problem | Category | Difficulty | zerotrac | Ratings | Notes |
 | :-: | --- | --- | --- | :-: | :-: | --- |
@@ -19,6 +19,7 @@ English | [简体中文](PROBLEMS.zh-CN.md)
 | 0453 | [Minimum Moves to Equal Array Elements](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/) | Simulation | 🟡 Medium | — | 3 / 2 / 3 / 2<br>4 / 1 / 3 / 1 | [Batched simulation](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md)<br>[Formula](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/formula/summary.md) |
 | 1021 | [Remove Outermost Parentheses](../Algorithms/simulation/1021-remove-outermost-parentheses/) | Simulation | 🟢 Easy | 1311 | 2 / 1 / 2 / 2 | [中文](../Algorithms/simulation/1021-remove-outermost-parentheses/summary.zh-CN.md) · [English](../Algorithms/simulation/1021-remove-outermost-parentheses/summary.md) |
 | 4088 | [Difference Between Peaks and Valleys](../Algorithms/simulation/4088-difference-between-peaks-and-valleys/) | Simulation | — | — | — | Code only |
+| 0104 | [Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/) | Binary Tree | 🟢 Easy | — | 1 / 2 / 2 / 1 | [中文](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) · [English](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) |
 | 0128 | [Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/) | Hash Table | 🟡 Medium | — | 3 / 2 / 3 / 2 | [中文](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) · [English](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) |
 | 0856 | [Score of Parentheses](../data-structures/stack/0856-score-of-parentheses/) | Stack | 🟡 Medium | — | — | Code only |
 | 2235 | [Add Two Integers](../primers/2235-add-two-integers-simple/) | Primer | 🟢 Easy | — | — | Code only |

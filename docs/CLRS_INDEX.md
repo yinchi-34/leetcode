@@ -73,6 +73,14 @@ Each section gets one table:
 |---|---|---|
 | [462. Minimum Moves to Equal Array Elements II (three-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.md) | Related idea | This implementation is $`O(n^2)`$ in the worst case; choosing the pivot by median of medians would guarantee worst-case $`O(n)`$ |
 
+## Chapter 10 Elementary Data Structures
+
+### §10.4 Representing rooted trees
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Direct | The `Left` and `Right` pointers of `TreeNode` are the left and right attributes of CLRS nodes, and an empty child `nil` corresponds to NIL |
+
 ## Chapter 11 Hash Tables
 
 ### §11.2 Hash tables
@@ -80,6 +88,14 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Insertion and membership queries on `numSet` take expected $`O(1)`$, which the overall expected $`O(n)`$ relies on |
+
+## Chapter 12 Binary Search Trees
+
+### §12.1 What is a binary search tree?
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Related idea | INORDER-TREE-WALK makes one call per node, and Theorem 12.1 proves it takes $`\Theta(n)`$ time; 4.5 counts calls the same way ("one non-empty call per node"), except that this problem combines subtree results in postorder |
 
 ## Chapter 15 Dynamic Programming
 
@@ -102,6 +118,14 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Related idea | The state is measured by $`\Phi = \sum x_i - n \cdot \min x`$, and bounding $`\Delta\Phi \ge -1`$ per move yields the lower bound; here it proves a lower bound rather than performing amortized analysis |
+
+## Appendix B Sets, Etc.
+
+### B.5 Trees
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Direct | Challenge 2: CLRS defines depth and height by edges, while this problem counts nodes, so on a non-empty tree the answer is the CLRS height plus 1 |
 
 ## Appendix C Counting and Probability
 
