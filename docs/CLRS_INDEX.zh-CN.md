@@ -25,7 +25,7 @@
 | [118. 杨辉三角](../Algorithms/simulation/0118-pascals-triangle/summary.zh-CN.md) | 直接对应 | 用“前 $`i`$ 行已正确”的外层循环不变式，按初始化、保持、终止三步证明 |
 | [3644. 排序排列](../Algorithms/bit-manipulation/3644-maximum-k-to-sort-a-permutation/summary.zh-CN.md) | 直接对应 | 用“`res` 是前缀中支撑集元素的按位与”的不变式，按初始化、保持、终止三步证明代码算出 $`M`$ |
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | 引理 1 的内层不变式与外层“`res` 是已处理段首的最大段长”的不变式，都按初始化、保持、终止三步证明 |
-| [453. 最小操作次数使数组元素相等](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.zh-CN.md) | 直接对应 | 解法一用“前缀相等、后缀从未被跳过”的不变式，按初始化、保持、终止三步证明 |
+| [453. 最小操作次数使数组元素相等（成批模拟）](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md) | 直接对应 | 成批模拟用“前缀相等、后缀从未被跳过”的不变式，按初始化、保持、终止三步证明 |
 
 ## 第 3 章 函数的增长
 
@@ -34,6 +34,44 @@
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [118. 杨辉三角](../Algorithms/simulation/0118-pascals-triangle/summary.zh-CN.md) | 相关思想 | 斐波那契递推与本题递推同类，且杨辉三角浅对角线之和等于斐波那契数 |
+
+## 第 7 章 快速排序
+
+### §7.1 快速排序的描述
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（两路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) | 直接对应 | `partition` 就是 PARTITION，正确性按四个区域的循环不变式证明 |
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 相关思想 | 三路划分沿用 PARTITION “按区域写不变式”的证明结构，把区域从两类扩展到三类 |
+
+### §7.3 快速排序的随机化版本
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（两路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) | 直接对应 | `randomPartition` 就是 RANDOMIZED-PARTITION |
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 直接对应 | `randomPartition3` 与 RANDOMIZED-PARTITION 相同：先把随机元素换到 `a[r]` 再划分 |
+
+### 思考题 7-2 针对相同元素值的快速排序
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（两路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) | 直接对应 | 全相等数组让本解法退化为 $`\Theta(n^2)`$，正是该思考题讨论的情形 |
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 直接对应 | 三路划分把等于主元的元素单独成段，避免全相等数组上的 $`\Theta(n^2)`$ |
+
+## 第 9 章 中位数和顺序统计量
+
+### §9.2 期望为线性时间的选择算法
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（两路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) | 直接对应 | `QuickSelect` 就是 RANDOMIZED-SELECT；期望 $`O(n)`$ 的分析假设元素互不相同 |
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 直接对应 | `QuickSelect` 即 RANDOMIZED-SELECT：只递归包含第 $`k`$ 小的一侧，期望 $`O(n)`$ |
+
+### §9.3 最坏情况为线性时间的选择算法
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 相关思想 | 本实现最坏 $`O(n^2)`$；若需要最坏 $`O(n)`$，可改用中位数的中位数选主元 |
 
 ## 第 11 章 散列表
 
@@ -63,7 +101,7 @@
 
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
-| [453. 最小操作次数使数组元素相等](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.zh-CN.md) | 相关思想 | 用 $`\Phi = \sum x_i - n \cdot \min x`$ 刻画状态，界定每步 $`\Delta\Phi \ge -1`$ 得到步数下界；这里用于证明下界，不是做摊还分析 |
+| [453. 最小操作次数使数组元素相等（成批模拟）](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md) | 相关思想 | 用 $`\Phi = \sum x_i - n \cdot \min x`$ 刻画状态，界定每步 $`\Delta\Phi \ge -1`$ 得到步数下界；这里用于证明下界，不是做摊还分析 |
 
 ## 附录 C 计数与概率
 

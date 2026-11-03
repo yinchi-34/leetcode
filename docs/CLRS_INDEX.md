@@ -25,7 +25,7 @@ Each section gets one table:
 | [118. Pascal's Triangle](../Algorithms/simulation/0118-pascals-triangle/summary.md) | Direct | Proves correctness with the outer-loop invariant "the first $`i`$ rows are correct" in the initialization, maintenance, and termination steps |
 | [3644. Maximum K to Sort a Permutation](../Algorithms/bit-manipulation/3644-maximum-k-to-sort-a-permutation/summary.md) | Direct | Proves the code computes $`M`$ with the invariant "`res` is the AND of the support elements in the prefix" in the initialization, maintenance, and termination steps |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Lemma 1's inner invariant and the outer invariant "`res` is the longest run among processed heads" are each proved by initialization, maintenance, and termination |
-| [453. Minimum Moves to Equal Array Elements](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.md) | Direct | Solution 1 is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
+| [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Direct | The batched simulation is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
 
 ## Chapter 3 Growth of Functions
 
@@ -34,6 +34,44 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [118. Pascal's Triangle](../Algorithms/simulation/0118-pascals-triangle/summary.md) | Related idea | The Fibonacci recurrence is the same kind as this problem's, and the shallow-diagonal sums of Pascal's triangle are Fibonacci numbers |
+
+## Chapter 7 Quicksort
+
+### §7.1 Description of quicksort
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [462. Minimum Moves to Equal Array Elements II (two-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.md) | Direct | `partition` is PARTITION, proved correct by its four-region loop invariant |
+| [462. Minimum Moves to Equal Array Elements II (three-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.md) | Related idea | Three-way partitioning reuses PARTITION's region-based invariant proof, extending the regions from two classes to three |
+
+### §7.3 A randomized version of quicksort
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [462. Minimum Moves to Equal Array Elements II (two-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.md) | Direct | `randomPartition` is RANDOMIZED-PARTITION |
+| [462. Minimum Moves to Equal Array Elements II (three-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.md) | Direct | `randomPartition3` matches RANDOMIZED-PARTITION: swap a random element into `a[r]`, then partition |
+
+### Problem 7-2 Quicksort with equal element values
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [462. Minimum Moves to Equal Array Elements II (two-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.md) | Direct | An all-equal array makes this solution degrade to $`\Theta(n^2)`$, exactly the case that problem discusses |
+| [462. Minimum Moves to Equal Array Elements II (three-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.md) | Direct | Three-way partitioning puts elements equal to the pivot in their own block, avoiding $`\Theta(n^2)`$ on all-equal arrays |
+
+## Chapter 9 Medians and Order Statistics
+
+### §9.2 Selection in expected linear time
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [462. Minimum Moves to Equal Array Elements II (two-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.md) | Direct | `QuickSelect` is RANDOMIZED-SELECT; the expected $`O(n)`$ analysis assumes distinct elements |
+| [462. Minimum Moves to Equal Array Elements II (three-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.md) | Direct | `QuickSelect` is RANDOMIZED-SELECT: it recurses only into the side containing the $`k`$-th smallest, in expected $`O(n)`$ |
+
+### §9.3 Selection in worst-case linear time
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [462. Minimum Moves to Equal Array Elements II (three-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.md) | Related idea | This implementation is $`O(n^2)`$ in the worst case; choosing the pivot by median of medians would guarantee worst-case $`O(n)`$ |
 
 ## Chapter 11 Hash Tables
 
@@ -63,7 +101,7 @@ Each section gets one table:
 
 | Problem | Relation | How It Appears Here |
 |---|---|---|
-| [453. Minimum Moves to Equal Array Elements](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/summary.md) | Related idea | The state is measured by $`\Phi = \sum x_i - n \cdot \min x`$, and bounding $`\Delta\Phi \ge -1`$ per move yields the lower bound; here it proves a lower bound rather than performing amortized analysis |
+| [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Related idea | The state is measured by $`\Phi = \sum x_i - n \cdot \min x`$, and bounding $`\Delta\Phi \ge -1`$ per move yields the lower bound; here it proves a lower bound rather than performing amortized analysis |
 
 ## Appendix C Counting and Probability
 

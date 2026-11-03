@@ -1,8 +1,13 @@
-# 453. Minimum Moves to Equal Array Elements
+# 453. Minimum Moves to Equal Array Elements — Batched Simulation
 
 English | [简体中文](./summary.zh-CN.md)
 
-Terminology follows the [shared glossary](../../../docs/GLOSSARY.md), and math notation follows the repository's [GitHub math writing conventions](../../../docs/GITHUB_MATH.md).
+Terminology follows the [shared glossary](../../../../docs/GLOSSARY.md), and math notation follows the repository's [GitHub math writing conventions](../../../../docs/GITHUB_MATH.md).
+
+This problem has two solutions in two directories that share one set of test cases:
+
+- **Batched simulation** (this page): after sorting, the group of equal elements chases the next element in batches. This page gives the problem statement, the potential-function lower bound, and the full proof of the batched simulation.
+- [**Formula**](../formula/summary.md): one pass computing $`\sum a_i - n \cdot \min a`$, proved by the "reverse view" equivalence.
 
 ## 1. Problem Information
 
@@ -10,9 +15,9 @@ Terminology follows the [shared glossary](../../../docs/GLOSSARY.md), and math n
 - **Official Difficulty**: Medium
 - **Primary Category**: Simulation
 - **Secondary Category**: Math
-- **Tags**: `Simulation`, `Math`, `Potential Function`, `Equivalent Transformation`, `Lower Bound and Achievability`
+- **Tags**: `Simulation`, `Math`, `Potential Function`, `Lower Bound and Achievability`, `Sorting`
 - **Code**: [solution.go](./solution.go)
-- **Tests**: [solution_test.go](./solution_test.go)
+- **Tests**: [solution_test.go](../solution_test.go) (in the parent directory, shared by both solutions)
 
 ### Difficulty Rating
 
@@ -21,7 +26,7 @@ Terminology follows the [shared glossary](../../../docs/GLOSSARY.md), and math n
 - zerotrac Rating: No data available ([source](https://github.com/zerotrac/leetcode_problem_rating/blob/main/ratings.txt))
 - LeetCode Official Difficulty: Medium
 
-**Four-Dimensional Rating — Solution 1: Batched Simulation (`minMovesBatched`)**
+**Four-Dimensional Rating — Batched Simulation**
 
 - Evaluation Scope: $`1 \le n \le 10^5`$, $`-10^9 \le a_i \le 10^9`$, the answer fits in a 32-bit integer; time $`O(n \log n)`$, extra space $`O(n)`$; Go implementation.
 
@@ -32,18 +37,7 @@ Terminology follows the [shared glossary](../../../docs/GLOSSARY.md), and math n
 | Correctness Reasoning Difficulty | 3 | Needs a loop invariant to show each batch is valid and ends in a caught-up prefix, plus a separate potential-function argument for the lower bound |
 | Implementation Difficulty | 2 | The loop must compute `a[i] + res` before updating `res` and then overwrite `a[i]` with the caught-up value; the update order is easy to get wrong |
 
-**Four-Dimensional Rating — Solution 2: Closed-Form Formula (`minMoves`)**
-
-- Evaluation Scope: same as above; time $`\Theta(n)`$, extra space $`O(1)`$; Go implementation.
-
-| Dimension | Score | Reason |
-|---|---|---|
-| Modeling Difficulty | 4 | One must split "add 1 to the other $`n-1`$ elements" into "add 1 to all, then subtract 1 from one", and use the fact that a uniform shift does not affect equality to transform the problem into "subtract 1 from one element per move" |
-| Knowledge Prerequisites | 1 | Only a sum and a minimum are needed |
-| Correctness Reasoning Difficulty | 3 | Requires induction on the step count to show the two problems' states differ by $`t \cdot \mathbf{1}`$, followed by separate lower-bound and achievability arguments |
-| Implementation Difficulty | 1 | One pass; $`\sum a_i`$ can reach about $`10^{14}`$, which fits in Go's 64-bit `int` |
-
-Ratings follow [RATING.md](../../../docs/RATING.md). Each dimension is evaluated independently and not combined into a total score.
+Ratings follow [RATING.md](../../../../docs/RATING.md). Each dimension is evaluated independently and not combined into a total score.
 
 ## 2. Problem Understanding
 
@@ -69,6 +63,8 @@ The code was written as "the answer is $`\sum a_i - n \cdot \min a`$" and passed
 1. Why not simply simulate step by step? Nothing in the problem forbids it.
 2. "Add 1 to the other $`n-1`$" and "subtract 1 from one" make no difference to the gaps between elements. But why does that alone justify switching to a different problem?
 
+The second question is discussed in the [formula solution](../formula/summary.md); this page answers the first.
+
 ### Difficulties Encountered
 
 Step-by-step simulation is valid; the issue is the number of steps. For `[1, 1000000000]`, each move shrinks the gap by at most 1, so about $`10^9`$ moves are needed; with $`n`$ up to $`10^5`$ and $`O(n)`$ work per move, the total can reach the order of $`10^{14}`$ operations.
@@ -92,11 +88,11 @@ Two corrections to this process were needed:
 - The length of a batch is not "current minimum versus global maximum", but the gap between the group's value and the **current** value of the chased element, which has been increasing in every earlier batch.
 - Each batch skips the chased element, which is usually not the global maximum. So the basic step-by-step simulation must be stated as "skip any non-minimum element each step", not "skip the maximum"; only then is the batched simulation a special case of it, and the two can share one proof.
 
-Pushing further shows that each batch has length exactly $`a_i - a_0`$ (Challenge 1 in Section 5); summing over the batches gives the formula. The reverse view is another route to the same formula (Challenge 2 in Section 5).
+Pushing further shows that each batch has length exactly $`a_i - a_0`$ (Challenge 1 in Section 5).
 
 ## 4. Algorithm Specification
 
-**Algorithm Name:** Solution 1 is Batched Simulation; Solution 2 is the Closed-Form Formula.
+**Algorithm Name:** Batched Simulation
 
 ### 4.1 Input
 
@@ -115,8 +111,6 @@ The minimum number of moves $`k^*`$: some sequence of $`k^*`$ moves makes all el
 
 Indices are 0-based.
 
-**Solution 1: Batched Simulation**
-
 ```text
 MIN-MOVES-BATCHED(A)
     B ← SORT(copy of A)              // ascending
@@ -133,33 +127,20 @@ MIN-MOVES-BATCHED(A)
 - `res`: total number of moves made so far.
 - `B[i-1]`: the common value of the prefix $`B[0..i-1]`$ at the start of batch $`i`$.
 
-**Solution 2: Formula**
-
-```text
-MIN-MOVES(A)
-    S ← 0
-    μ ← A[0]
-    for i ← 0 to n - 1
-        S ← S + A[i]
-        μ ← min(μ, A[i])
-    return S - n · μ
-```
-
 ### 4.4 Correctness
 
-**Proof Method:** a potential function gives the lower bound; a loop invariant shows the batched simulation achieves it; an equivalent transformation proves the formula independently.
+**Proof Method:** a potential function gives the lower bound; a loop invariant shows the batched simulation achieves it.
 
-**Notation**: $`S = \sum_i a_i`$, $`\mu = \min_i a_i`$. The move $`\mathrm{op}_j`$ adds 1 to every element except index $`j`$, called "skipping $`j`$". $`\mathbf{1} = (1, \ldots, 1)`$, and $`e_j`$ is the vector with 1 in position $`j`$ and 0 elsewhere.
+**Notation**: $`S = \sum_i a_i`$, $`\mu = \min_i a_i`$. The move $`\mathrm{op}_j`$ adds 1 to every element except index $`j`$, called "skipping $`j`$".
 
-**Theorem**: $`k^* = S - n\mu`$.
+**Theorem**: the minimum number of moves is $`k^* = S - n\mu`$.
 
 #### I. Key Properties Required for Correctness
 
-1. **Lemma 1 (Counting)**: after $`k`$ moves in which index $`j`$ is skipped $`c_j`$ times, $`\sum_j c_j = k`$ and the current value is $`x_i = a_i + k - c_i`$.
-2. **Lemma 2 (Translation Invariance)**: for any constant $`t`$, all entries of $`x`$ are equal if and only if all entries of $`x + t\mathbf{1}`$ are equal.
-3. **Potential Function**: $`\Phi(x) = \sum_i x_i - n \cdot \min x`$. We have $`\Phi(x) \ge 0`$, with $`\Phi(x) = 0`$ if and only if all entries are equal.
+1. **Lemma 1 (Counting)**: after $`k`$ moves in which index $`j`$ is skipped $`c_j`$ times, $`\sum_j c_j = k`$ and the current value is $`x_i = a_i + k - c_i`$. In particular, elements never skipped have all gained $`k`$, so the gaps between them are unchanged.
+2. **Potential Function**: $`\Phi(x) = \sum_i x_i - n \cdot \min x`$. We have $`\Phi(x) \ge 0`$, with $`\Phi(x) = 0`$ if and only if all entries are equal.
 
-Lemma 1: each move skips exactly one index, so $`\sum_j c_j = k`$; element $`i`$ fails to increase only in the $`c_i`$ moves that skip it. Lemma 2: $`x_i = x_j \iff x_i + t = x_j + t`$.
+Lemma 1: each move skips exactly one index, so $`\sum_j c_j = k`$; element $`i`$ fails to increase only in the $`c_i`$ moves that skip it.
 
 #### II. Correctness Proof
 
@@ -178,7 +159,7 @@ with equality when the skipped element is not a minimum.
 
 Therefore $`k^* = S - n\mu`$. The only problem with direct simulation is the number of moves.
 
-**(2) Solution 1: loop invariant for the batched simulation**
+**(2) Loop invariant for the batched simulation**
 
 Let `B` be sorted in ascending order, so $`B_0 = \mu`$. View the process as actually performing moves on the sorted array. At the start of iteration $`i`$ of the `for` loop ($`1 \le i \le n`$, where $`i = n`$ means the loop has ended):
 
@@ -206,43 +187,23 @@ Nonnegativity follows from sorting, so the batch is well defined. Skipping index
 \mathrm{res} = \sum_{i=1}^{n-1} (B_i - B_0) = S - n\mu .
 ```
 
-In each batch the skipped index $`i`$ is strictly greater than the prefix until it is caught, so every move skips a non-minimum element; this is one of the achieving schedules in (1). Combined with the lower bound in (1), Solution 1 returns $`k^*`$.
-
-**(3) Solution 2: equivalent transformation**
-
-**Lemma 3 (Equivalent Problems)**: start from $`a`$ and use the same index sequence $`j_0, j_1, \ldots`$. In the original problem, move $`t`$ skips $`j_t`$; in the new problem, move $`t`$ subtracts 1 from $`j_t`$. Let $`x^{(t)}`$ and $`y^{(t)}`$ be the respective states after $`t`$ moves. Then
-
-```math
-x^{(t)} = y^{(t)} + t\,\mathbf{1} .
-```
-
-*Proof*: by induction on $`t`$. For $`t = 0`$ both equal $`a`$. If it holds for $`t`$, then since skipping $`j_t`$ equals "add 1 to all, then subtract 1 from $`j_t`$",
-
-```math
-x^{(t+1)} = x^{(t)} + \mathbf{1} - e_{j_t} = \bigl(y^{(t)} - e_{j_t}\bigr) + (t+1)\mathbf{1} = y^{(t+1)} + (t+1)\mathbf{1} . \qquad \square
-```
-
-By Lemma 2, $`x^{(t)}`$ is all-equal if and only if $`y^{(t)}`$ is. Move sequences of the two problems correspond one to one with equal lengths, so their minimum move counts coincide. Note that the two problems **end at different values**; what coincides is the move at which all elements become equal.
-
-In the new problem, values only decrease. If all end at $`T`$, then $`T \le \mu`$, and the number of moves is $`\sum_i (a_i - T) = S - nT \ge S - n\mu`$, with equality at $`T = \mu`$. Hence $`k^* = S - n\mu`$, which is exactly what Solution 2 returns.
+In each batch the skipped index $`i`$ is strictly greater than the prefix until it is caught, so every move skips a non-minimum element; this is one of the achieving schedules in (1).
 
 #### III. Conclusion
 
-Part (1) gives the lower bound $`S - n\mu`$ for every valid input and shows it is achievable. Part (2) shows the batched simulation performs a schedule meeting that bound. Part (3) derives the same value independently by an equivalent transformation. Both solutions return $`k^*`$ on every valid input.
+Part (1) gives the lower bound $`S - n\mu`$ for every valid input, and Part (2) shows the batched simulation performs a schedule meeting it, so the algorithm returns $`k^*`$.
 
 ### 4.5 Complexity Analysis
 
 Let the input size be $`n`$.
 
-**Time Complexity**
+**Time Complexity: O(n log n)**
 
-- Solution 1: sorting takes $`O(n \log n)`$, followed by one $`\Theta(n)`$ pass, for $`O(n \log n)`$ overall.
-- Solution 2: one pass, $`\Theta(n)`$.
+Sorting takes $`O(n \log n)`$, followed by one $`\Theta(n)`$ pass.
 
-**Space Complexity**
+**Space Complexity: O(n)**
 
-- Solution 1: copying the array before sorting uses $`\Theta(n)`$ extra space. If modifying the input is allowed, it can sort in place, leaving the extra space to `sort.Ints` (Go's pdqsort uses $`O(\log n)`$ stack space).
-- Solution 2: two variables, $`O(1)`$ extra space.
+Copying the array before sorting uses $`\Theta(n)`$ extra space. If modifying the input is allowed, it can sort in place, leaving the extra space to `sort.Ints` (Go's pdqsort uses $`O(\log n)`$ stack space).
 
 **Numeric range**: $`\lvert S \rvert \le 10^5 \cdot 10^9 = 10^{14}`$, and $`n \cdot \lvert\mu\rvert`$ is bounded likewise, which fits in a 64-bit `int`.
 
@@ -261,23 +222,14 @@ With concrete numbers `[1,2,5,7]`, the three batches take 1, 4, and 6 moves, whi
 
 **Transferable Insight:** when merging repeated steps, look for elements that have not been affected so far; their gaps are unchanged and often give the batch length directly.
 
-### Challenge 2: What justifies the reverse view
-
-"The gaps are the same" is true but not enough: one must show the two problems become all-equal at the same move, and be clear that their final values differ. The original problem ends at $`\mu + k^*`$, the new one at $`\mu`$.
-
-**Understanding Process**
-
-Split one move into "add 1 to all" and "subtract 1 from one". The former does not change whether all elements are equal (Lemma 2), so after each move the two states differ by a constant vector (Lemma 3). Only a uniform shift has been discarded.
-
-**Transferable Insight:** when the goal depends only on differences between elements, split each move into a uniform shift plus a local change; dropping the shift often simplifies the operation considerably.
-
 ## 6. Key Takeaways
 
 This problem yields the following reusable methods:
 
 1. **Potential Function**: here $`\Phi = \sum x_i - n \cdot \min x`$ measures how far the state is from the goal. Showing "each move decreases it by at most 1" gives the lower bound, and a schedule that decreases it by exactly 1 per move gives achievability. Applies to minimum-move problems with unit-cost moves, provided one can find a quantity whose per-move change is bounded and which is 0 exactly at the goal.
 2. **Batching Repeated Steps**: here consecutive moves skipping the same element are merged and counted at once, turning a simulation with up to $`10^9`$ moves into $`n-1`$ batches. Applies to simulations with long runs of identical actions, provided each batch length can be computed directly from the current state.
-3. **Translation Invariance**: when the goal depends only on differences, decompose a move into a uniform shift plus a local change and pass to an equivalent problem; here "add 1 to $`n-1`$ elements" becomes "subtract 1 from one element". Limitation: valid only when the goal truly ignores uniform shifts; if the final value were prescribed, the shift could not be dropped.
+
+The batch lengths $`a_i - a_0`$ do not depend on one another, so all batches can be merged once more into a formula; see the [formula solution](../formula/summary.md).
 
 ### CLRS Connections
 
@@ -285,7 +237,7 @@ Chapter numbers follow the third edition of CLRS.
 
 | Concept | CLRS Section | Relation | Where it appears in this problem |
 |---|---|---|---|
-| Loop invariant | §2.1 Insertion sort | Direct | Solution 1 is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
+| Loop invariant | §2.1 Insertion sort | Direct | Proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
 | Potential method | §17.3 The potential method | Related idea | The state is measured by $`\Phi = \sum x_i - n \cdot \min x`$, and bounding $`\Delta\Phi \ge -1`$ per move yields the lower bound; here it proves a lower bound rather than performing amortized analysis |
 
 ## 7. Review Log
@@ -305,10 +257,10 @@ Chapter numbers follow the third edition of CLRS.
 
 ## 8. Related Problems
 
-- [462. Minimum Moves to Equal Array Elements II](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/) — also asks for all elements to become equal, but each move adds or subtracts 1 from a single element; the target is no longer pinned to the minimum by monotonicity and must be chosen as a median, and the lower-bound argument changes from "the potential drops by at most 1 per move" to the convexity of the sum of absolute deviations in the target.
+- [462. Minimum Moves to Equal Array Elements II](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/) — also asks for all elements to become equal, but each move adds or subtracts 1 from a single element; the target is no longer pinned to the minimum and must be chosen as a median.
 
 ---
 
 **One-Sentence Summary**
 
-Each element must be skipped once for every unit it exceeds the minimum; step-by-step simulation, batched simulation, and the reverse view all lead to $`\sum a_i - n \cdot \min a`$.
+Step-by-step simulation is correct but too slow; after sorting, the equal group chases the next element in batches of exactly $`a_i - a_0`$ moves, for $`\sum a_i - n \cdot \min a`$ in total.
