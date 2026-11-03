@@ -35,6 +35,44 @@
 |---|---|---|
 | [118. 杨辉三角](../Algorithms/simulation/0118-pascals-triangle/summary.zh-CN.md) | 相关思想 | 斐波那契递推与本题递推同类，且杨辉三角浅对角线之和等于斐波那契数 |
 
+## 第 7 章 快速排序
+
+### §7.1 快速排序的描述
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（两路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) | 直接对应 | `partition` 就是 PARTITION，正确性按四个区域的循环不变式证明 |
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 相关思想 | 三路划分沿用 PARTITION “按区域写不变式”的证明结构，把区域从两类扩展到三类 |
+
+### §7.3 快速排序的随机化版本
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（两路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) | 直接对应 | `randomPartition` 就是 RANDOMIZED-PARTITION |
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 直接对应 | `randomPartition3` 与 RANDOMIZED-PARTITION 相同：先把随机元素换到 `a[r]` 再划分 |
+
+### 思考题 7-2 针对相同元素值的快速排序
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（两路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) | 直接对应 | 全相等数组让本解法退化为 $`\Theta(n^2)`$，正是该思考题讨论的情形 |
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 直接对应 | 三路划分把等于主元的元素单独成段，避免全相等数组上的 $`\Theta(n^2)`$ |
+
+## 第 9 章 中位数和顺序统计量
+
+### §9.2 期望为线性时间的选择算法
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（两路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) | 直接对应 | `QuickSelect` 就是 RANDOMIZED-SELECT；期望 $`O(n)`$ 的分析假设元素互不相同 |
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 直接对应 | `QuickSelect` 即 RANDOMIZED-SELECT：只递归包含第 $`k`$ 小的一侧，期望 $`O(n)`$ |
+
+### §9.3 最坏情况为线性时间的选择算法
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 相关思想 | 本实现最坏 $`O(n^2)`$；若需要最坏 $`O(n)`$，可改用中位数的中位数选主元 |
+
 ## 第 11 章 散列表
 
 ### §11.2 散列表
