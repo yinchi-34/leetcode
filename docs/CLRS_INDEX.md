@@ -24,6 +24,8 @@ Each section gets one table:
 |---|---|---|
 | [118. Pascal's Triangle](../Algorithms/simulation/0118-pascals-triangle/summary.md) | Direct | Proves correctness with the outer-loop invariant "the first $`i`$ rows are correct" in the initialization, maintenance, and termination steps |
 | [3644. Maximum K to Sort a Permutation](../Algorithms/bit-manipulation/3644-maximum-k-to-sort-a-permutation/summary.md) | Direct | Proves the code computes $`M`$ with the invariant "`res` is the AND of the support elements in the prefix" in the initialization, maintenance, and termination steps |
+| [49. Group Anagrams (sorted key)](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.md) | Direct | Lemma 2 uses the invariant "the key set and each group match exactly the first $`i`$ strings", proved by initialization, maintenance, and termination, to show each string lands in exactly one group |
+| [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | Lemma 3 uses the invariant "`cnt` holds the letter counts of the prefix", proved by initialization, maintenance, and termination, to show the counts are correct |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Lemma 1's inner invariant and the outer invariant "`res` is the longest run among processed heads" are each proved by initialization, maintenance, and termination |
 | [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Direct | The batched simulation is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
 
@@ -58,6 +60,14 @@ Each section gets one table:
 | [462. Minimum Moves to Equal Array Elements II (two-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.md) | Direct | An all-equal array makes this solution degrade to $`\Theta(n^2)`$, exactly the case that problem discusses |
 | [462. Minimum Moves to Equal Array Elements II (three-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.md) | Direct | Three-way partitioning puts elements equal to the pivot in their own block, avoiding $`\Theta(n^2)`$ on all-equal arrays |
 
+## Chapter 8 Sorting in Linear Time
+
+### §8.2 Counting sort
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Related idea | Computing `cnt` is the same as the step of COUNTING-SORT that counts occurrences of each value; this solution stops there instead of expanding the counts into a sorted sequence, because the count vector itself can serve as the key |
+
 ## Chapter 9 Medians and Order Statistics
 
 ### §9.2 Selection in expected linear time
@@ -83,10 +93,18 @@ Each section gets one table:
 
 ## Chapter 11 Hash Tables
 
+### §11.1 Direct-address tables
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | `cnt` is a direct-address table keyed by the letter numbers $`0 \ldots 25`$, with worst-case $`O(1)`$ per count |
+
 ### §11.2 Hash tables
 
 | Problem | Relation | How It Appears Here |
 |---|---|---|
+| [49. Group Anagrams (sorted key)](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.md) | Direct | `groups` is keyed by the sorted string; each string costs one lookup and one append, expected $`O(\ell_i)`$ |
+| [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | `groups` is keyed by `[26]int`; each string costs one lookup and one append, expected $`O(\lvert\Sigma\rvert)`$ |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Insertion and membership queries on `numSet` take expected $`O(1)`$, which the overall expected $`O(n)`$ relies on |
 
 ## Chapter 12 Binary Search Trees
@@ -126,6 +144,12 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Direct | Challenge 2: CLRS defines depth and height by edges, while this problem counts nodes, so on a non-empty tree the answer is the CLRS height plus 1 |
+### B.2 Relations
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [49. Group Anagrams (sorted key)](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.md) | Direct | Lemma 0 proves "being anagrams" is an equivalence relation; by Theorem B.1 its classes form a partition, and the output groups are exactly those classes |
+| [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | Cites Lemma 0 of the sorted-key solution: "being anagrams" is an equivalence relation, so by Theorem B.1 its classes form a partition, and the output groups are exactly those classes |
 
 ## Appendix C Counting and Probability
 

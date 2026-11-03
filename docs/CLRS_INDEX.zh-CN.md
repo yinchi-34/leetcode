@@ -24,6 +24,8 @@
 |---|---|---|
 | [118. 杨辉三角](../Algorithms/simulation/0118-pascals-triangle/summary.zh-CN.md) | 直接对应 | 用“前 $`i`$ 行已正确”的外层循环不变式，按初始化、保持、终止三步证明 |
 | [3644. 排序排列](../Algorithms/bit-manipulation/3644-maximum-k-to-sort-a-permutation/summary.zh-CN.md) | 直接对应 | 用“`res` 是前缀中支撑集元素的按位与”的不变式，按初始化、保持、终止三步证明代码算出 $`M`$ |
+| [49. 字母异位词分组（排序键）](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.zh-CN.md) | 直接对应 | 引理 2 用“键集合与各组内容恰好对应前 $`i`$ 个字符串”的不变式，按初始化、保持、终止三步证明分组不重不漏 |
+| [49. 字母异位词分组（计数键）](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) | 直接对应 | 引理 3 用“`cnt` 是前缀中各字母的出现次数”的不变式，按初始化、保持、终止三步证明计数正确 |
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | 引理 1 的内层不变式与外层“`res` 是已处理段首的最大段长”的不变式，都按初始化、保持、终止三步证明 |
 | [453. 最小操作次数使数组元素相等（成批模拟）](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md) | 直接对应 | 成批模拟用“前缀相等、后缀从未被跳过”的不变式，按初始化、保持、终止三步证明 |
 
@@ -58,6 +60,14 @@
 | [462. 最小操作次数使数组元素相等 II（两路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) | 直接对应 | 全相等数组让本解法退化为 $`\Theta(n^2)`$，正是该思考题讨论的情形 |
 | [462. 最小操作次数使数组元素相等 II（三路划分）](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md) | 直接对应 | 三路划分把等于主元的元素单独成段，避免全相等数组上的 $`\Theta(n^2)`$ |
 
+## 第 8 章 线性时间排序
+
+### §8.2 计数排序
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [49. 字母异位词分组（计数键）](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) | 相关思想 | `cnt` 的计算与 COUNTING-SORT 中统计每个值出现次数的那一步相同；本解法到此为止，不再把计数展开成有序序列，因为计数向量本身就能作键 |
+
 ## 第 9 章 中位数和顺序统计量
 
 ### §9.2 期望为线性时间的选择算法
@@ -83,10 +93,18 @@
 
 ## 第 11 章 散列表
 
+### §11.1 直接寻址表
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [49. 字母异位词分组（计数键）](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) | 直接对应 | `cnt` 是以字母编号 $`0 \ldots 25`$ 为关键字的直接寻址表，每次计数最坏 $`O(1)`$ |
+
 ### §11.2 散列表
 
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
+| [49. 字母异位词分组（排序键）](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.zh-CN.md) | 直接对应 | `groups` 以排序串为键，每个字符串一次查表与追加，期望 $`O(\ell_i)`$ |
+| [49. 字母异位词分组（计数键）](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) | 直接对应 | `groups` 以 `[26]int` 为键，每个字符串一次查表与追加，期望 $`O(\lvert\Sigma\rvert)`$ |
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | `numSet` 的插入与存在性查询期望 $`O(1)`$，是整体期望 $`O(n)`$ 的前提 |
 
 ## 第 12 章 二叉搜索树
@@ -126,6 +144,12 @@
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [104. 二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) | 直接对应 | 难点二：CLRS 按边数定义深度和树高，本题按结点数计，非空树上答案等于 CLRS 树高加 1 |
+### B.2 关系
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [49. 字母异位词分组（排序键）](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.zh-CN.md) | 直接对应 | 引理 0 证明“互为异位词”是等价关系，由定理 B.1 其等价类构成划分，输出的组就是这些等价类 |
+| [49. 字母异位词分组（计数键）](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) | 直接对应 | 引用排序键解法的引理 0：“互为异位词”是等价关系，由定理 B.1 其等价类构成划分，输出的组就是这些等价类 |
 
 ## 附录 C 计数与概率
 

@@ -69,6 +69,8 @@ Each pattern lists what the table stores and when it applies. New problems are a
 
 - **What the table stores**: canonical form to the list of elements in that group.
 - **When it applies**: elements that are equivalent under some transformation must be grouped. The key step is designing a canonical form that maps equivalent elements to the same key, such as the sorted string of an anagram.
+- **Requirement on the key**: the key must be a **complete invariant** of the equivalence relation: equivalent elements have equal keys, and elements with equal keys are equivalent. Satisfying only the first merges different groups; satisfying only the second splits a group.
+- **In Go**: a slice cannot be a `map` key; convert it to a `string`, or, when the value range is small, use a fixed-length array (such as `[26]int`) as the key.
 
 ### 3.4 Start only from chain heads: avoid rescanning
 
@@ -92,6 +94,7 @@ Each pattern lists what the table stores and when it applies. New problems are a
 
 | Problem | Location | Pattern | Notes |
 |---|---|---|---|
+| 49. Group Anagrams: [sorted key](./0049-group-anagrams/sorted-key/summary.md), [count key](./0049-group-anagrams/count-key/summary.md) | This directory | 3.2 Counting; 3.3 Grouping by canonical form | The sorted string or the `[26]int` count vector is the key; `map[key][]string` groups in one pass |
 | [128. Longest Consecutive Sequence](./0128-longest-consecutive-sequence/summary.md) | This directory | 3.1 Membership; 3.4 Chain heads | The set holds all elements; extend only from `x` with `x-1` absent, for $`O(n)`$ total time |
 
 ## 6. CLRS Connections
