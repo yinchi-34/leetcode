@@ -83,6 +83,14 @@ Each section gets one table:
 |---|---|---|
 | [462. Minimum Moves to Equal Array Elements II (three-way)](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.md) | Related idea | This implementation is $`O(n^2)`$ in the worst case; choosing the pivot by median of medians would guarantee worst-case $`O(n)`$ |
 
+## Chapter 10 Elementary Data Structures
+
+### §10.4 Representing rooted trees
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Direct | The `Left` and `Right` pointers of `TreeNode` are the left and right attributes of CLRS nodes, and an empty child `nil` corresponds to NIL |
+
 ## Chapter 11 Hash Tables
 
 ### §11.1 Direct-address tables
@@ -98,6 +106,14 @@ Each section gets one table:
 | [49. Group Anagrams (sorted key)](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.md) | Direct | `groups` is keyed by the sorted string; each string costs one lookup and one append, expected $`O(\ell_i)`$ |
 | [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | `groups` is keyed by `[26]int`; each string costs one lookup and one append, expected $`O(\lvert\Sigma\rvert)`$ |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Insertion and membership queries on `numSet` take expected $`O(1)`$, which the overall expected $`O(n)`$ relies on |
+
+## Chapter 12 Binary Search Trees
+
+### §12.1 What is a binary search tree?
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Related idea | INORDER-TREE-WALK makes one call per node, and Theorem 12.1 proves it takes $`\Theta(n)`$ time; 4.5 counts calls the same way ("one non-empty call per node"), except that this problem combines subtree results in postorder |
 
 ## Chapter 15 Dynamic Programming
 
@@ -123,6 +139,11 @@ Each section gets one table:
 
 ## Appendix B Sets, Etc.
 
+### B.5 Trees
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Direct | Challenge 2: CLRS defines depth and height by edges, while this problem counts nodes, so on a non-empty tree the answer is the CLRS height plus 1 |
 ### B.2 Relations
 
 | Problem | Relation | How It Appears Here |
