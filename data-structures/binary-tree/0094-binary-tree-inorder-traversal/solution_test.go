@@ -3,7 +3,40 @@ package solution
 import (
 	"slices"
 	"testing"
+
+	iterative "leetcode-go/data-structures/binary-tree/0094-binary-tree-inorder-traversal/iterative"
+	recursive "leetcode-go/data-structures/binary-tree/0094-binary-tree-inorder-traversal/recursive"
 )
+
+// TreeNode is a test-local tree. Each solution package defines its own TreeNode,
+// as LeetCode does, so tests build this tree once and convert it per package.
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func toRecursive(t *TreeNode) *recursive.TreeNode {
+	if t == nil {
+		return nil
+	}
+	return &recursive.TreeNode{Val: t.Val, Left: toRecursive(t.Left), Right: toRecursive(t.Right)}
+}
+
+func toIterative(t *TreeNode) *iterative.TreeNode {
+	if t == nil {
+		return nil
+	}
+	return &iterative.TreeNode{Val: t.Val, Left: toIterative(t.Left), Right: toIterative(t.Right)}
+}
+
+var solutions = []struct {
+	name string
+	fn   func(*TreeNode) []int
+}{
+	{"recursive", func(t *TreeNode) []int { return recursive.InorderTraversal(toRecursive(t)) }},
+	{"iterative", func(t *TreeNode) []int { return iterative.InorderTraversal(toIterative(t)) }},
+}
 
 // buildTree builds a tree from LeetCode's level-order form, where nil marks a missing child.
 func buildTree(vals []any) *TreeNode {
@@ -28,14 +61,6 @@ func buildTree(vals []any) *TreeNode {
 		i++
 	}
 	return root
-}
-
-var solutions = []struct {
-	name string
-	fn   func(*TreeNode) []int
-}{
-	{"recursive", inorderTraversal},
-	{"iterative", inorderTraversalIterative},
 }
 
 func TestInorderTraversal(t *testing.T) {

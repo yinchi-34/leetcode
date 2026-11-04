@@ -88,7 +88,7 @@ type TreeNode struct {
 
 | 题目 | 位置 | 使用模式 | 说明 |
 |---|---|---|---|
-| [94. 二叉树的中序遍历](./0094-binary-tree-inorder-traversal/) | 本目录 | 3.1 中序遍历；3.5 显式栈 | 两种写法：递归“左 → 根 → 右”（每层返回新切片，复制总量为 $`O(nh)`$，见第 2.3 节）；用栈一路向左压栈、弹出时访问再转向右子树 |
+| 94. 二叉树的中序遍历：[递归](./0094-binary-tree-inorder-traversal/recursive/summary.zh-CN.md)、[显式栈](./0094-binary-tree-inorder-traversal/iterative/summary.zh-CN.md) | 本目录 | 3.1 中序遍历；3.5 显式栈 | 递归“左 → 根 → 右”（每层返回新切片，复制总量为 $`O(nh)`$，见第 2.3 节）；显式栈一路向左压栈、弹出时访问再转向右子树 |
 | [104. 二叉树的最大深度](./0104-maximum-depth-of-binary-tree/summary.zh-CN.md) | 本目录 | 3.2 自底向上返回信息 | 后序：根的深度 = 两棵子树深度的较大者 + 1 |
 
 ## 5. CLRS 关联

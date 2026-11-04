@@ -28,6 +28,7 @@ Each section gets one table:
 | [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | Lemma 3 uses the invariant "`cnt` holds the letter counts of the prefix", proved by initialization, maintenance, and termination, to show the counts are correct |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Lemma 1's inner invariant and the outer invariant "`res` is the longest run among processed heads" are each proved by initialization, maintenance, and termination |
 | [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Direct | The batched simulation is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
+| [94. Binary Tree Inorder Traversal (Explicit Stack)](../data-structures/binary-tree/0094-binary-tree-inorder-traversal/iterative/summary.md) | Direct | Invariant I (output decomposition) and Invariant II (the stack is a leftward path) are each proved by initialization, maintenance, and termination |
 
 ## Chapter 3 Growth of Functions
 
@@ -85,11 +86,19 @@ Each section gets one table:
 
 ## Chapter 10 Elementary Data Structures
 
+### §10.1 Stacks and queues
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [94. Binary Tree Inorder Traversal (Explicit Stack)](../data-structures/binary-tree/0094-binary-tree-inorder-traversal/iterative/summary.md) | Direct | `stack` uses the end of a slice as its top, with `append` as PUSH and truncation as POP; last-in first-out makes the innermost ancestor resume first |
+
 ### §10.4 Representing rooted trees
 
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Direct | The `Left` and `Right` pointers of `TreeNode` are the left and right attributes of CLRS nodes, and an empty child `nil` corresponds to NIL |
+| [94. Binary Tree Inorder Traversal (Recursive)](../data-structures/binary-tree/0094-binary-tree-inorder-traversal/recursive/summary.md) | Direct | `TreeNode`'s `Left` and `Right` pointers are the left and right attributes of CLRS nodes, and a `nil` child is NIL |
+| [94. Binary Tree Inorder Traversal (Explicit Stack)](../data-structures/binary-tree/0094-binary-tree-inorder-traversal/iterative/summary.md) | Direct | Exercise 10.4-3 asks for an $`O(n)`$-time nonrecursive procedure that prints every key of a binary tree using a stack; this solution is one such procedure, in inorder |
 
 ## Chapter 11 Hash Tables
 
@@ -114,6 +123,8 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Related idea | INORDER-TREE-WALK makes one call per node, and Theorem 12.1 proves it takes $`\Theta(n)`$ time; 4.5 counts calls the same way ("one non-empty call per node"), except that this problem combines subtree results in postorder |
+| [94. Binary Tree Inorder Traversal (Recursive)](../data-structures/binary-tree/0094-binary-tree-inorder-traversal/recursive/summary.md) | Direct | This solution is INORDER-TREE-WALK, except that CLRS prints on visit while this solution returns and concatenates subsequences, which causes the copying cost in §4.5; the BST case matches the discussion around Theorem 12.1 that an inorder walk prints keys in sorted order |
+| [94. Binary Tree Inorder Traversal (Explicit Stack)](../data-structures/binary-tree/0094-binary-tree-inorder-traversal/iterative/summary.md) | Direct | Exercise 12.1-3 asks for a nonrecursive inorder tree walk, with a hint that an easy solution uses a stack |
 
 ## Chapter 15 Dynamic Programming
 
@@ -130,12 +141,19 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | The inner `while` runs $`m - (\text{number of heads}) \le m`$ times in total, counted over the whole algorithm rather than per loop |
+| [94. Binary Tree Inorder Traversal (Explicit Stack)](../data-structures/binary-tree/0094-binary-tree-inorder-traversal/iterative/summary.md) | Direct | Each node is pushed and popped once, for $`2n`$ iterations in total; the same argument as the MULTIPOP example's "pops never exceed pushes" |
 
 ### §17.3 The potential method
 
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Related idea | The state is measured by $`\Phi = \sum x_i - n \cdot \min x`$, and bounding $`\Delta\Phi \ge -1`$ per move yields the lower bound; here it proves a lower bound rather than performing amortized analysis |
+
+### §17.4 Dynamic tables
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [94. Binary Tree Inorder Traversal (Recursive)](../data-structures/binary-tree/0094-binary-tree-inorder-traversal/recursive/summary.md) | Related idea | In §4.5, the extra copying from `append` growth adds only a constant factor |
 
 ## Appendix B Sets, Etc.
 
@@ -144,6 +162,8 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Direct | Challenge 2: CLRS defines depth and height by edges, while this problem counts nodes, so on a non-empty tree the answer is the CLRS height plus 1 |
+| [94. Binary Tree Inorder Traversal (Recursive)](../data-structures/binary-tree/0094-binary-tree-inorder-traversal/recursive/summary.md) | Direct | 4.1 writes the input as either the empty tree or $`(r, L, R)`$, and both the definition of $`\mathrm{in}`$ and the proof follow this recursive structure |
+
 ### B.2 Relations
 
 | Problem | Relation | How It Appears Here |

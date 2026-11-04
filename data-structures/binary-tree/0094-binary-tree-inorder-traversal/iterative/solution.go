@@ -7,20 +7,10 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func inorderTraversal(root *TreeNode) []int {
-	res := []int{}
-	if root == nil {
-		return []int{}
-	}
-
-	res = append(res, inorderTraversal(root.Left)...)
-	res = append(res, root.Val)
-	res = append(res, inorderTraversal(root.Right)...)
-
-	return res
-}
-
-func inorderTraversalIterative(root *TreeNode) []int {
+// InorderTraversal returns the values of the tree rooted at root in inorder
+// (left subtree, root, right subtree), using an explicit stack of the
+// ancestors whose own values have not been visited yet.
+func InorderTraversal(root *TreeNode) []int {
 	res := []int{}
 	stack := []*TreeNode{}
 	node := root
