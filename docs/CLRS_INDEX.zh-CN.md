@@ -85,6 +85,12 @@
 
 ## 第 10 章 基本数据结构
 
+### §10.2 链表
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [160. 相交链表](../data-structures/linked-list/0160-intersection-of-two-linked-lists/summary.zh-CN.md) | 直接对应 | `ListNode` 的 `Next` 就是 CLRS 中结点的 next 属性，表尾的 `nil` 对应 NIL；本题只沿 `next` 读、不插入也不删除，引理 1 依赖“每个结点只有一个 next” |
+
 ### §10.4 有根树的表示
 
 | 题目 | 关联程度 | 本题中的体现 |

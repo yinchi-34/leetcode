@@ -85,6 +85,12 @@ Each section gets one table:
 
 ## Chapter 10 Elementary Data Structures
 
+### §10.2 Linked lists
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [160. Intersection of Two Linked Lists](../data-structures/linked-list/0160-intersection-of-two-linked-lists/summary.md) | Direct | `Next` of `ListNode` is the next attribute of a CLRS node, and the `nil` tail corresponds to NIL; this problem only reads along `next`, with no insertion or deletion, and Lemma 1 relies on "each node has exactly one next" |
+
 ### §10.4 Representing rooted trees
 
 | Problem | Relation | How It Appears Here |

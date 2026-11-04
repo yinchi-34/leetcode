@@ -2,8 +2,7 @@
 
 English | [简体中文](PROBLEMS.zh-CN.md)
 
-19 problems, 12 of them with notes in both languages. Ratings are **modeling / knowledge prerequisites / correctness reasoning / implementation**, each from 1 to 5; see the [rating criteria](RATING.md). Problems with several solutions are rated on separate lines (3619: recursive DFS, then explicit-stack DFS; 453: batched simulation, then formula; 462: sorting, then three-way quickselect, then two-way quickselect). When adding a problem, update this table.
-19 problems, 12 of them with notes in both languages. Ratings are **modeling / knowledge prerequisites / correctness reasoning / implementation**, each from 1 to 5; see the [rating criteria](RATING.md). Problems with several solutions are rated on separate lines (3619: recursive DFS, then explicit-stack DFS; 453: batched simulation, then formula; 462: sorting, then three-way quickselect, then two-way quickselect; 49: sorted key, then count key). When adding a problem, update this table.
+21 problems, 14 of them with notes in both languages. Ratings are **modeling / knowledge prerequisites / correctness reasoning / implementation**, each from 1 to 5; see the [rating criteria](RATING.md). Problems with several solutions are rated on separate lines (3619: recursive DFS, then explicit-stack DFS; 453: batched simulation, then formula; 462: sorting, then three-way quickselect, then two-way quickselect; 49: sorted key, then count key). When adding a problem, update this table.
 
 | # | Problem | Category | Difficulty | zerotrac | Ratings | Notes |
 | :-: | --- | --- | --- | :-: | :-: | --- |
@@ -23,6 +22,7 @@ English | [简体中文](PROBLEMS.zh-CN.md)
 | 0104 | [Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/) | Binary Tree | 🟢 Easy | — | 1 / 2 / 2 / 1 | [中文](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) · [English](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) |
 | 0049 | [Group Anagrams](../data-structures/hash-table/0049-group-anagrams/) | Hash Table | 🟡 Medium | — | 2 / 2 / 2 / 1<br>2 / 2 / 2 / 2 | [Sorted key](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.md)<br>[Count key](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) |
 | 0128 | [Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/) | Hash Table | 🟡 Medium | — | 3 / 2 / 3 / 2 | [中文](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) · [English](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) |
+| 0160 | [Intersection of Two Linked Lists](../data-structures/linked-list/0160-intersection-of-two-linked-lists/) | Linked List | 🟢 Easy | — | 3 / 2 / 3 / 2 | [中文](../data-structures/linked-list/0160-intersection-of-two-linked-lists/summary.zh-CN.md) · [English](../data-structures/linked-list/0160-intersection-of-two-linked-lists/summary.md) |
 | 0856 | [Score of Parentheses](../data-structures/stack/0856-score-of-parentheses/) | Stack | 🟡 Medium | — | — | Code only |
 | 2235 | [Add Two Integers](../primers/2235-add-two-integers-simple/) | Primer | 🟢 Easy | — | — | Code only |
 | 2413 | [Smallest Even Multiple](../primers/2413-smallest-even-multiple/) | Primer | 🟢 Easy | — | — | Code only |

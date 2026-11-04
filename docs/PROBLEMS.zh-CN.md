@@ -2,7 +2,7 @@
 
 [English](PROBLEMS.md) | 简体中文
 
-共 20 题，其中 13 题已有中英文题解。四维评分依次为**建模 / 知识门槛 / 正确性论证 / 实现**，每项 1～5 分，含义见[难度评分标准](RATING.zh-CN.md)。新增题目时请同步更新本表。
+共 21 题，其中 14 题已有中英文题解。四维评分依次为**建模 / 知识门槛 / 正确性论证 / 实现**，每项 1～5 分，含义见[难度评分标准](RATING.zh-CN.md)。新增题目时请同步更新本表。
 
 | 题号 | 题目 | 分类 | 难度 | zerotrac | 四维评分 | 题解 |
 | :-: | --- | --- | --- | :-: | :-: | --- |
@@ -22,6 +22,7 @@
 | 0104 | [二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/) | 二叉树 | 🟢 简单 | — | 1 / 2 / 2 / 1 | [中文](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) · [English](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) |
 | 0049 | [字母异位词分组](../data-structures/hash-table/0049-group-anagrams/) | 哈希表 | 🟡 中等 | — | 2 / 2 / 2 / 1<br>2 / 2 / 2 / 2 | [排序键](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.zh-CN.md)<br>[计数键](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) |
 | 0128 | [最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/) | 哈希表 | 🟡 中等 | — | 3 / 2 / 3 / 2 | [中文](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) · [English](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) |
+| 0160 | [相交链表](../data-structures/linked-list/0160-intersection-of-two-linked-lists/) | 链表 | 🟢 简单 | — | 3 / 2 / 3 / 2 | [中文](../data-structures/linked-list/0160-intersection-of-two-linked-lists/summary.zh-CN.md) · [English](../data-structures/linked-list/0160-intersection-of-two-linked-lists/summary.md) |
 | 0856 | [括号的分数](../data-structures/stack/0856-score-of-parentheses/) | 栈 | 🟡 中等 | — | — | 仅代码 |
 | 2235 | [两整数相加](../primers/2235-add-two-integers-simple/) | 入门 | 🟢 简单 | — | — | 仅代码 |
 | 2413 | [最小偶倍数](../primers/2413-smallest-even-multiple/) | 入门 | 🟢 简单 | — | — | 仅代码 |
