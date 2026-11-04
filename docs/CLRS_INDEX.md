@@ -85,12 +85,19 @@ Each section gets one table:
 
 ## Chapter 10 Elementary Data Structures
 
+### §10.1 Stacks and queues
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [226. Invert Binary Tree (explicit-stack DFS)](../data-structures/binary-tree/0226-invert-binary-tree/iterative-dfs/summary.md) | Direct | `stack` is a last-in, first-out stack: `append` is PUSH, reading the last element and truncating is POP, and `len(stack) > 0` is the negation of STACK-EMPTY |
+
 ### §10.4 Representing rooted trees
 
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Direct | The `Left` and `Right` pointers of `TreeNode` are the left and right attributes of CLRS nodes, and an empty child `nil` corresponds to NIL |
-| [226. Invert Binary Tree](../data-structures/binary-tree/0226-invert-binary-tree/summary.md) | Direct | Inversion rewrites the left and right attributes of every node; an empty child `nil` corresponds to NIL, and the algorithm creates no nodes, only rearranges existing pointers |
+| [226. Invert Binary Tree (recursive DFS)](../data-structures/binary-tree/0226-invert-binary-tree/recursive-dfs/summary.md) | Direct | Inversion rewrites the left and right attributes of every node; an empty child `nil` corresponds to NIL, and the algorithm creates no nodes, only rearranges existing pointers |
+| [226. Invert Binary Tree (explicit-stack DFS)](../data-structures/binary-tree/0226-invert-binary-tree/iterative-dfs/summary.md) | Direct | Inversion rewrites every node's left and right attributes; Exercise 10.4-3 asks for an $`O(n)`$-time nonrecursive traversal of a binary tree using a stack, which is exactly this traversal with "print the key" replaced by "swap the pointers" |
 
 ## Chapter 11 Hash Tables
 
@@ -115,7 +122,7 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Related idea | INORDER-TREE-WALK makes one call per node, and Theorem 12.1 proves it takes $`\Theta(n)`$ time; 4.5 counts calls the same way ("one non-empty call per node"), except that this problem combines subtree results in postorder |
-| [226. Invert Binary Tree](../data-structures/binary-tree/0226-invert-binary-tree/summary.md) | Related idea | INORDER-TREE-WALK makes one call per node, and Theorem 12.1 proves it takes $`\Theta(n)`$ time; 4.5 counts $`2n + 1`$ calls the same way. The corollary in 4.4 shows the inverted tree's inorder sequence is the reverse of the original |
+| [226. Invert Binary Tree (recursive DFS)](../data-structures/binary-tree/0226-invert-binary-tree/recursive-dfs/summary.md) | Related idea | INORDER-TREE-WALK makes one call per node, and Theorem 12.1 proves it takes $`\Theta(n)`$ time; 4.5 counts $`2n + 1`$ calls the same way. The corollary in 4.4 shows the inverted tree's inorder sequence is the reverse of the original |
 
 ## Chapter 15 Dynamic Programming
 
@@ -146,7 +153,8 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [104. Maximum Depth of Binary Tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) | Direct | Challenge 2: CLRS defines depth and height by edges, while this problem counts nodes, so on a non-empty tree the answer is the CLRS height plus 1 |
-| [226. Invert Binary Tree](../data-structures/binary-tree/0226-invert-binary-tree/summary.md) | Direct | B.5.3 Binary and positional trees: $`M(T)`$ in 4.2 is defined on the recursive definition of binary trees; the cases `left_child_only` and `right_child_only` reflect B.5.3's distinction that "only a left child" and "only a right child" are different binary trees |
+| [226. Invert Binary Tree (recursive DFS)](../data-structures/binary-tree/0226-invert-binary-tree/recursive-dfs/summary.md) | Direct | B.5.3 Binary and positional trees: $`M(T)`$ in 4.2 is defined on the recursive definition of binary trees; the cases `left_child_only` and `right_child_only` reflect B.5.3's distinction that "only a left child" and "only a right child" are different binary trees |
+| [226. Invert Binary Tree (explicit-stack DFS)](../data-structures/binary-tree/0226-invert-binary-tree/iterative-dfs/summary.md) | Direct | B.5.3 Binary and positional trees: $`M(T)`$ in 4.2 is defined on the recursive definition of binary trees; `left_child_only` and `right_child_only` reflect B.5.3's distinction that "only a left child" and "only a right child" are different binary trees |
 ### B.2 Relations
 
 | Problem | Relation | How It Appears Here |

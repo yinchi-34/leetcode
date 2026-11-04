@@ -1,8 +1,13 @@
-# 226. Invert Binary Tree
+# 226. Invert Binary Tree — Recursive DFS
 
 English | [简体中文](./summary.zh-CN.md)
 
-Use the [shared glossary](../../../docs/GLOSSARY.md) and follow the repository's [GitHub math conventions](../../../docs/GITHUB_MATH.md).
+Use the [shared glossary](../../../../docs/GLOSSARY.md) and follow the repository's [GitHub math conventions](../../../../docs/GITHUB_MATH.md).
+
+This problem has two solutions in two directories, with the same test cases (each directory has its own copy of `solution_test.go`):
+
+- [**Explicit-stack DFS**](../iterative-dfs/summary.md): a slice serves as a stack; when a node is popped, its children are pushed and then its left and right pointers are swapped.
+- **Recursive DFS** (this note): invert both subtrees first, then swap at the root.
 
 ## 1. Problem Information
 
@@ -32,7 +37,7 @@ Use the [shared glossary](../../../docs/GLOSSARY.md) and follow the repository's
 | Correctness Reasoning | 2 | One strong induction on the number of nodes, plus an argument that the two recursive calls act on disjoint subtrees, so neither their order nor the in-place writes interfere |
 | Implementation Difficulty | 1 | One `nil` base case and one multiple assignment; the only trap is splitting the swap into two sequential assignments (see Challenge 1) |
 
-Ratings follow the repository's [RATING.md](../../../docs/RATING.md). Each dimension is rated independently, with no combined total.
+Ratings follow the repository's [RATING.md](../../../../docs/RATING.md). Each dimension is rated independently, with no combined total.
 
 ## 2. Problem Understanding
 
@@ -215,7 +220,7 @@ The fix is to make sure both recursive calls read the original pointers: store t
 
 This implementation is postorder: both subtrees are inverted first, then the root swaps. Preorder is also correct: swap `x.left` and `x.right` first, then recursively invert the two new children. Both satisfy "every node swaps exactly once", and a node $`v`$'s final position depends only on whether each node on its path from the root (including itself) has swapped, not on the order of the swaps. Inorder does not work: it recurses into the left subtree, swaps, and then recurses into the "right subtree", but the right pointer now points to the original left subtree that was just inverted, which flips it back, while the original right subtree is never processed.
 
-For the same reason, a queue-based level-order traversal that swaps the children of each dequeued node is a correct non-recursive version; its extra space is the width of the widest level rather than the height.
+For the same reason, taking nodes one at a time from a stack or a queue and swapping each node's children is a correct non-recursive version; see [Explicit-stack DFS](../iterative-dfs/summary.md). With a queue it becomes level order, and its extra space is the width of the widest level rather than the height.
 
 **Transferable Insight:** When the per-node operation is a local swap whose result does not depend on the order of operations, preorder, postorder, and level order all work, as long as each node is processed exactly once. Inorder puts a node's two subtree visits on opposite sides of the swap and is the easiest to get wrong.
 
@@ -268,7 +273,7 @@ Section numbers follow the third edition of CLRS. "Relation" is either "Direct" 
 - [101. Symmetric Tree](https://leetcode.cn/problems/symmetric-tree/) — A tree is symmetric exactly when its left subtree is the mirror of its right subtree; using the path view from Challenge 3, recurse on both at once, comparing "left of left" with "right of right" and "right of left" with "left of right".
 - [100. Same Tree](https://leetcode.cn/problems/same-tree/) — The skeleton for recursing on two trees at once; swapping left and right on one side turns it into the mirror comparison of 101.
 - [951. Flip Equivalent Binary Trees](https://leetcode.cn/problems/flip-equivalent-binary-trees/) — This problem swaps at every node; 951 allows swapping at any subset of nodes and asks whether one tree can be turned into the other, so the recursion must try both the "swapped" and "not swapped" correspondence.
-- [104. Maximum Depth of Binary Tree](../0104-maximum-depth-of-binary-tree/summary.md) — Also postorder recursion, with the same $`2n + 1`$ calls and a stack as deep as the tree; the difference is that 104 combines subtree return values, while this problem rewires pointers in place.
+- [104. Maximum Depth of Binary Tree](../../0104-maximum-depth-of-binary-tree/summary.md) — Also postorder recursion, with the same $`2n + 1`$ calls and a stack as deep as the tree; the difference is that 104 combines subtree return values, while this problem rewires pointers in place.
 
 ---
 

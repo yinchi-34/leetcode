@@ -85,12 +85,19 @@
 
 ## 第 10 章 基本数据结构
 
+### §10.1 栈和队列
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [226. 翻转二叉树（显式栈 DFS）](../data-structures/binary-tree/0226-invert-binary-tree/iterative-dfs/summary.zh-CN.md) | 直接对应 | `stack` 是后进先出的栈：`append` 对应 PUSH，取末尾并截断对应 POP，`len(stack) > 0` 对应 STACK-EMPTY 取反 |
+
 ### §10.4 有根树的表示
 
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [104. 二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) | 直接对应 | `TreeNode` 的 `Left`、`Right` 指针就是 CLRS 中结点的 left、right 属性，空孩子 `nil` 对应 NIL |
-| [226. 翻转二叉树](../data-structures/binary-tree/0226-invert-binary-tree/summary.zh-CN.md) | 直接对应 | 翻转就是改写每个结点的 left、right 属性；空孩子 `nil` 对应 NIL，算法不新建结点，只重排已有指针 |
+| [226. 翻转二叉树（递归 DFS）](../data-structures/binary-tree/0226-invert-binary-tree/recursive-dfs/summary.zh-CN.md) | 直接对应 | 翻转就是改写每个结点的 left、right 属性；空孩子 `nil` 对应 NIL，算法不新建结点，只重排已有指针 |
+| [226. 翻转二叉树（显式栈 DFS）](../data-structures/binary-tree/0226-invert-binary-tree/iterative-dfs/summary.zh-CN.md) | 直接对应 | 翻转改写每个结点的 left、right 属性；练习 10.4-3 要求用栈在 $`O(n)`$ 时间内非递归地遍历二叉树，本实现正是这种遍历，只是把“输出关键字”换成“交换左右指针” |
 
 ## 第 11 章 散列表
 
@@ -115,7 +122,7 @@
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [104. 二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) | 相关思想 | INORDER-TREE-WALK 对每个结点调用一次，定理 12.1 证明其时间为 $`\Theta(n)`$；4.5 用同样的“每个结点一次非空调用”的方式数调用次数，只是本题按后序合并子树结果 |
-| [226. 翻转二叉树](../data-structures/binary-tree/0226-invert-binary-tree/summary.zh-CN.md) | 相关思想 | INORDER-TREE-WALK 对每个结点调用一次，定理 12.1 证明其时间为 $`\Theta(n)`$；4.5 用同样的方式数出 $`2n + 1`$ 次调用。4.4 的推论说明翻转后的中序序列是原序列的逆序 |
+| [226. 翻转二叉树（递归 DFS）](../data-structures/binary-tree/0226-invert-binary-tree/recursive-dfs/summary.zh-CN.md) | 相关思想 | INORDER-TREE-WALK 对每个结点调用一次，定理 12.1 证明其时间为 $`\Theta(n)`$；4.5 用同样的方式数出 $`2n + 1`$ 次调用。4.4 的推论说明翻转后的中序序列是原序列的逆序 |
 
 ## 第 15 章 动态规划
 
@@ -146,7 +153,8 @@
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [104. 二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) | 直接对应 | 难点二：CLRS 按边数定义深度和树高，本题按结点数计，非空树上答案等于 CLRS 树高加 1 |
-| [226. 翻转二叉树](../data-structures/binary-tree/0226-invert-binary-tree/summary.zh-CN.md) | 直接对应 | B.5.3 二叉树和位置树：4.2 的 $`M(T)`$ 按二叉树的递归定义给出；`left_child_only` 与 `right_child_only` 两个用例对应 B.5.3 中“只有左孩子”和“只有右孩子”是不同二叉树的区分 |
+| [226. 翻转二叉树（递归 DFS）](../data-structures/binary-tree/0226-invert-binary-tree/recursive-dfs/summary.zh-CN.md) | 直接对应 | B.5.3 二叉树和位置树：4.2 的 $`M(T)`$ 按二叉树的递归定义给出；`left_child_only` 与 `right_child_only` 两个用例对应 B.5.3 中“只有左孩子”和“只有右孩子”是不同二叉树的区分 |
+| [226. 翻转二叉树（显式栈 DFS）](../data-structures/binary-tree/0226-invert-binary-tree/iterative-dfs/summary.zh-CN.md) | 直接对应 | B.5.3 二叉树和位置树：4.2 的 $`M(T)`$ 按二叉树的递归定义给出；`left_child_only` 与 `right_child_only` 对应 B.5.3 中“只有左孩子”和“只有右孩子”是不同二叉树的区分 |
 ### B.2 关系
 
 | 题目 | 关联程度 | 本题中的体现 |
