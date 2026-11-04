@@ -84,6 +84,12 @@ Each pattern lists what the table stores and when it applies. New problems are a
 - **What the table stores**: prefix-sum value to its count (or earliest index).
 - **When it applies**: counting subarrays with sum $`k`$. A subarray sum is $`S_j - S_i`$, so the problem becomes a complement lookup for $`S_j - k`$.
 
+### 3.6 A key index for another structure
+
+- **What the table stores**: key to the position of an element in another structure, such as a list-node pointer or an array index.
+- **When it applies**: another structure (list, array, heap) keeps the order, but elements must also be found by key in $`O(1)`$ and then deleted or moved.
+- **Requirements**: every update must touch both sides; when the other structure needs to get back to the table (for example, when evicting the list tail), each element must store its key.
+
 ## 4. When a Hash Table Is Unnecessary
 
 1. **Small universe**: with only 26 letters, or $`0 \le x \le 10^5`$, a direct-address table (an array) is faster and has no worst-case degradation.
@@ -96,6 +102,7 @@ Each pattern lists what the table stores and when it applies. New problems are a
 |---|---|---|---|
 | 49. Group Anagrams: [sorted key](./0049-group-anagrams/sorted-key/summary.md), [count key](./0049-group-anagrams/count-key/summary.md) | This directory | 3.2 Counting; 3.3 Grouping by canonical form | The sorted string or the `[26]int` count vector is the key; `map[key][]string` groups in one pass |
 | [128. Longest Consecutive Sequence](./0128-longest-consecutive-sequence/summary.md) | This directory | 3.1 Membership; 3.4 Chain heads | The set holds all elements; extend only from `x` with `x-1` absent, for $`O(n)`$ total time |
+| [146. LRU Cache](./0146-lru-cache/summary.md) | This directory | 3.6 A key index for another structure | `map[int]*dLinkedNode` stores doubly-linked-list node pointers, the list is in recency order, and `get` and `put` take expected $`O(1)`$ |
 
 ## 6. CLRS Connections
 

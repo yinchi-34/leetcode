@@ -27,6 +27,7 @@
 | [49. 字母异位词分组（排序键）](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.zh-CN.md) | 直接对应 | 引理 2 用“键集合与各组内容恰好对应前 $`i`$ 个字符串”的不变式，按初始化、保持、终止三步证明分组不重不漏 |
 | [49. 字母异位词分组（计数键）](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) | 直接对应 | 引理 3 用“`cnt` 是前缀中各字母的出现次数”的不变式，按初始化、保持、终止三步证明计数正确 |
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | 引理 1 的内层不变式与外层“`res` 是已处理段首的最大段长”的不变式，都按初始化、保持、终止三步证明 |
+| [146. LRU 缓存](../data-structures/hash-table/0146-lru-cache/summary.zh-CN.md) | 相关思想 | 表示不变式沿用初始化、保持、终止的三步结构，只是“保持”针对每个操作而不是每次循环迭代 |
 | [453. 最小操作次数使数组元素相等（成批模拟）](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md) | 直接对应 | 成批模拟用“前缀相等、后缀从未被跳过”的不变式，按初始化、保持、终止三步证明 |
 
 ## 第 3 章 函数的增长
@@ -85,6 +86,12 @@
 
 ## 第 10 章 基本数据结构
 
+### §10.2 链表
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [146. LRU 缓存](../data-structures/hash-table/0146-lru-cache/summary.zh-CN.md) | 直接对应 | `remove` 就是 LIST-DELETE'，`addToHead` 与 LIST-INSERT' 做的是同一件事；本题用 `head`、`tail` 两个哨兵代替 CLRS 的单个循环哨兵 `L.nil`，最久未使用的结点由 `tail.prev` 直接给出 |
+
 ### §10.4 有根树的表示
 
 | 题目 | 关联程度 | 本题中的体现 |
@@ -106,6 +113,7 @@
 | [49. 字母异位词分组（排序键）](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.zh-CN.md) | 直接对应 | `groups` 以排序串为键，每个字符串一次查表与追加，期望 $`O(\ell_i)`$ |
 | [49. 字母异位词分组（计数键）](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) | 直接对应 | `groups` 以 `[26]int` 为键，每个字符串一次查表与追加，期望 $`O(\lvert\Sigma\rvert)`$ |
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | `numSet` 的插入与存在性查询期望 $`O(1)`$，是整体期望 $`O(n)`$ 的前提 |
+| [146. LRU 缓存](../data-structures/hash-table/0146-lru-cache/summary.zh-CN.md) | 直接对应 | `cache` 的查找、插入、删除期望 $`O(1)`$，是每个操作期望 $`O(1)`$ 的前提；该节指出给定元素本身时双向链表可 $`O(1)`$ 删除，本题用散列表把键换成结点正是为此 |
 
 ## 第 12 章 二叉搜索树
 
