@@ -30,6 +30,14 @@ func buildTree(vals []any) *TreeNode {
 	return root
 }
 
+var solutions = []struct {
+	name string
+	fn   func(*TreeNode) []int
+}{
+	{"recursive", inorderTraversal},
+	{"iterative", inorderTraversalIterative},
+}
+
 func TestInorderTraversal(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -73,11 +81,34 @@ func TestInorderTraversal(t *testing.T) {
 		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
-			result := inorderTraversal(buildTree(test.root))
-			if !slices.Equal(result, test.expected) {
-				t.Errorf("inorderTraversal(%v) = %v, want %v", test.root, result, test.expected)
+	for _, sol := range solutions {
+		for _, test := range tests {
+			t.Run(sol.name+"/"+test.name, func(t *testing.T) {
+				result := sol.fn(buildTree(test.root))
+				if !slices.Equal(result, test.expected) {
+					t.Errorf("%s(%v) = %v, want %v", sol.name, test.root, result, test.expected)
+				}
+			})
+		}
+	}
+}
+
+// TestInorderTraversalDeepChain checks both solutions on a 10^4-node right-skewed chain,
+// where the explicit stack never holds more than one node.
+func TestInorderTraversalDeepChain(t *testing.T) {
+	const n = 10000
+	var root *TreeNode
+	for i := n; i >= 1; i-- {
+		root = &TreeNode{Val: i, Right: root}
+	}
+	expected := make([]int, n)
+	for i := range expected {
+		expected[i] = i + 1
+	}
+	for _, sol := range solutions {
+		t.Run(sol.name, func(t *testing.T) {
+			if result := sol.fn(root); !slices.Equal(result, expected) {
+				t.Errorf("%s on a %d-node chain returned a wrong order", sol.name, n)
 			}
 		})
 	}

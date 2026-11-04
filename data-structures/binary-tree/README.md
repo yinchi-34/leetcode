@@ -88,7 +88,8 @@ Each pattern lists what the recursive function does and when it applies. New pro
 
 | Problem | Location | Pattern | Notes |
 |---|---|---|---|
-| [94. Binary Tree Inorder Traversal](./0094-binary-tree-inorder-traversal/) | This directory | 3.1 Inorder | Recursive "left → root → right"; the current implementation returns a fresh slice per call, for $`O(nh)`$ total copying, see Section 2.3 |
+| [94. Binary Tree Inorder Traversal](./0094-binary-tree-inorder-traversal/) | This directory | 3.1 Inorder; 3.5 Explicit stack | Two versions: recursive "left → root → right" (a fresh slice per call, for $`O(nh)`$ total copying, see Section 2.3); and a stack that pushes all the way left, visits on pop, then turns right |
+| [104. Maximum Depth of Binary Tree](./0104-maximum-depth-of-binary-tree/summary.md) | This directory | 3.2 Bottom-up return values | Postorder: the root's depth is the larger subtree depth plus 1 |
 
 ## 5. CLRS Connections
 
