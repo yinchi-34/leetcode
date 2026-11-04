@@ -85,12 +85,12 @@ GET-INTERSECTION-NODE(headA, headB)
     a = headA
     b = headB
     while a ≠ b                       ▷ compares the nodes themselves, not their values
-        if a == NIL
-            a = headB
-        else a = a.next
-        if b == NIL
-            b = headA
-        else b = b.next
+        if a ≠ NIL
+            a = a.next
+        else a = headB
+        if b ≠ NIL
+            b = b.next
+        else b = headA
     return a
 ```
 
