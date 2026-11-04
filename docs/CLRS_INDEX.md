@@ -90,7 +90,7 @@ Each section gets one table:
 
 | Problem | Relation | How It Appears Here |
 |---|---|---|
-| [146. LRU Cache](../data-structures/hash-table/0146-lru-cache/summary.md) | Direct | `remove` and `pushFront` are LIST-DELETE' and LIST-INSERT' with a sentinel, and the tail is `L.nil.prev` |
+| [146. LRU Cache](../data-structures/hash-table/0146-lru-cache/summary.md) | Direct | `remove` is LIST-DELETE' and `addToHead` does the same job as LIST-INSERT'; this solution uses two sentinels `head` and `tail` instead of CLRS's single circular sentinel `L.nil`, and the least recently used node is `tail.prev` |
 
 ### §10.4 Representing rooted trees
 
@@ -113,7 +113,7 @@ Each section gets one table:
 | [49. Group Anagrams (sorted key)](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.md) | Direct | `groups` is keyed by the sorted string; each string costs one lookup and one append, expected $`O(\ell_i)`$ |
 | [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | `groups` is keyed by `[26]int`; each string costs one lookup and one append, expected $`O(\lvert\Sigma\rvert)`$ |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Insertion and membership queries on `numSet` take expected $`O(1)`$, which the overall expected $`O(n)`$ relies on |
-| [146. LRU Cache](../data-structures/hash-table/0146-lru-cache/summary.md) | Direct | Lookup, insertion, and deletion in `nodes` take expected $`O(1)`$, which the expected $`O(1)`$ per operation relies on; the section notes that a doubly linked list deletes a given element in $`O(1)`$, and the hash table here turns a key into that element |
+| [146. LRU Cache](../data-structures/hash-table/0146-lru-cache/summary.md) | Direct | Lookup, insertion, and deletion in `cache` take expected $`O(1)`$, which the expected $`O(1)`$ per operation relies on; the section notes that a doubly linked list deletes a given element in $`O(1)`$, and the hash table here turns a key into that element |
 
 ## Chapter 12 Binary Search Trees
 

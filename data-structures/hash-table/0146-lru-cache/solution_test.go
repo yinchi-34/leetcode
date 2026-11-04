@@ -19,33 +19,39 @@ func put(key, value int) op { return op{name: "put", key: key, value: value} }
 // keysFromMRU walks the list from the most to the least recently used node.
 func keysFromMRU(c *LRUCache) []int {
 	var res []int
-	for x := c.sentinel.next; x != c.sentinel; x = x.next {
+	for x := c.head.next; x != c.tail; x = x.next {
 		res = append(res, x.key)
 	}
 	return res
 }
 
 // checkInvariant checks the representation invariant after every call: the
-// list is a well-formed circular list, its keys are exactly the map's keys,
+// list is a well-formed list from head to tail, its keys are exactly the map's keys,
 // each map entry points at the node holding that key, and the size is within
 // capacity.
 func checkInvariant(t *testing.T, c *LRUCache) {
 	t.Helper()
+	if c.head.prev != nil || c.tail.next != nil {
+		t.Fatalf("sentinels must not link outside the list")
+	}
+	if c.head.next.prev != c.head || c.tail.prev.next != c.tail {
+		t.Fatalf("broken links at a sentinel")
+	}
 	count := 0
-	for x := c.sentinel.next; x != c.sentinel; x = x.next {
+	for x := c.head.next; x != c.tail; x = x.next {
 		if x.next.prev != x || x.prev.next != x {
 			t.Fatalf("broken links at key %d", x.key)
 		}
-		if c.nodes[x.key] != x {
+		if c.cache[x.key] != x {
 			t.Fatalf("map entry for key %d does not point at its node", x.key)
 		}
 		count++
-		if count > len(c.nodes) {
-			t.Fatalf("list longer than map (%d entries)", len(c.nodes))
+		if count > len(c.cache) {
+			t.Fatalf("list longer than map (%d entries)", len(c.cache))
 		}
 	}
-	if count != len(c.nodes) {
-		t.Fatalf("list has %d nodes, map has %d", count, len(c.nodes))
+	if count != len(c.cache) {
+		t.Fatalf("list has %d nodes, map has %d", count, len(c.cache))
 	}
 	if count > c.capacity {
 		t.Fatalf("size %d exceeds capacity %d", count, c.capacity)

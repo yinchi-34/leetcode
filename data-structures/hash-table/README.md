@@ -102,7 +102,7 @@ Each pattern lists what the table stores and when it applies. New problems are a
 |---|---|---|---|
 | 49. Group Anagrams: [sorted key](./0049-group-anagrams/sorted-key/summary.md), [count key](./0049-group-anagrams/count-key/summary.md) | This directory | 3.2 Counting; 3.3 Grouping by canonical form | The sorted string or the `[26]int` count vector is the key; `map[key][]string` groups in one pass |
 | [128. Longest Consecutive Sequence](./0128-longest-consecutive-sequence/summary.md) | This directory | 3.1 Membership; 3.4 Chain heads | The set holds all elements; extend only from `x` with `x-1` absent, for $`O(n)`$ total time |
-| [146. LRU Cache](./0146-lru-cache/summary.md) | This directory | 3.6 A key index for another structure | `map[int]*node` stores doubly-linked-list node pointers, the list is in recency order, and `get` and `put` take expected $`O(1)`$ |
+| [146. LRU Cache](./0146-lru-cache/summary.md) | This directory | 3.6 A key index for another structure | `map[int]*dLinkedNode` stores doubly-linked-list node pointers, the list is in recency order, and `get` and `put` take expected $`O(1)`$ |
 
 ## 6. CLRS Connections
 

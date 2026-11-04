@@ -1,77 +1,79 @@
 package solution
 
-// node is an element of the doubly linked list. It stores its key as well as
-// its value so that evicting the tail can also remove the key from the map.
-type node struct {
+// dLinkedNode is an element of the doubly linked list. It stores its key as
+// well as its value so that evicting the tail can also remove the key from
+// the map.
+type dLinkedNode struct {
 	key, value int
-	prev, next *node
+	prev, next *dLinkedNode
 }
 
-// LRUCache keeps at most capacity key-value pairs. The doubly linked list is
-// circular with a sentinel, as in CLRS §10.2: sentinel.next is the most
-// recently used node and sentinel.prev is the least recently used one. The
-// map sends each key in the cache to its node, so both Get and Put run in
-// expected O(1) time.
+// LRUCache keeps at most capacity key-value pairs. The doubly linked list has
+// two sentinels: head.next is the most recently used node and tail.prev is the
+// least recently used one, so no operation needs a nil check. The map sends
+// each key in the cache to its node, so both Get and Put run in expected O(1)
+// time.
 type LRUCache struct {
-	capacity int
-	nodes    map[int]*node
-	sentinel *node
+	capacity   int
+	cache      map[int]*dLinkedNode
+	head, tail *dLinkedNode
 }
 
 func Constructor(capacity int) LRUCache {
-	s := &node{}
-	s.prev, s.next = s, s
+	head, tail := &dLinkedNode{}, &dLinkedNode{}
+	head.next = tail
+	tail.prev = head
 	return LRUCache{
 		capacity: capacity,
-		nodes:    make(map[int]*node, capacity),
-		sentinel: s,
+		cache:    make(map[int]*dLinkedNode, capacity+1),
+		head:     head,
+		tail:     tail,
 	}
 }
 
 // Get returns the value of key and marks it as most recently used, or returns
 // -1 if key is not in the cache.
 func (c *LRUCache) Get(key int) int {
-	x, ok := c.nodes[key]
+	node, ok := c.cache[key]
 	if !ok {
 		return -1
 	}
-	c.moveToFront(x)
-	return x.value
+	c.remove(node)
+	c.addToHead(node)
+	return node.value
 }
 
-// Put sets the value of key and marks it as most recently used. If the key is
-// new and the cache is full, the least recently used key is evicted first.
+// Put sets the value of key and marks it as most recently used. A new key is
+// inserted first; if that makes the cache exceed its capacity, the least
+// recently used key is evicted.
 func (c *LRUCache) Put(key, value int) {
-	if x, ok := c.nodes[key]; ok {
-		x.value = value
-		c.moveToFront(x)
+	if node, ok := c.cache[key]; ok {
+		node.value = value
+		c.remove(node)
+		c.addToHead(node)
 		return
 	}
-	if len(c.nodes) == c.capacity {
-		lru := c.sentinel.prev
+	node := &dLinkedNode{key: key, value: value}
+	c.cache[key] = node
+	c.addToHead(node)
+	if len(c.cache) > c.capacity {
+		lru := c.tail.prev
 		c.remove(lru)
-		delete(c.nodes, lru.key)
+		delete(c.cache, lru.key)
 	}
-	x := &node{key: key, value: value}
-	c.pushFront(x)
-	c.nodes[key] = x
 }
 
-// remove unlinks x from the list (LIST-DELETE' in CLRS §10.2).
-func (c *LRUCache) remove(x *node) {
-	x.prev.next = x.next
-	x.next.prev = x.prev
+// remove unlinks node from the list.
+func (c *LRUCache) remove(node *dLinkedNode) {
+	node.prev.next = node.next
+	node.next.prev = node.prev
 }
 
-// pushFront links x right after the sentinel (LIST-INSERT' in CLRS §10.2).
-func (c *LRUCache) pushFront(x *node) {
-	x.next = c.sentinel.next
-	c.sentinel.next.prev = x
-	c.sentinel.next = x
-	x.prev = c.sentinel
-}
-
-func (c *LRUCache) moveToFront(x *node) {
-	c.remove(x)
-	c.pushFront(x)
+// addToHead links node right after head. The old first node's prev must be
+// updated before head.next, because head.next is the only way to reach it.
+func (c *LRUCache) addToHead(node *dLinkedNode) {
+	node.prev = c.head
+	node.next = c.head.next
+	c.head.next.prev = node
+	c.head.next = node
 }

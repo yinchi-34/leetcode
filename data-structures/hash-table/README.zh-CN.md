@@ -102,7 +102,7 @@ n := len(m)               // 元素个数
 |---|---|---|---|
 | 49. 字母异位词分组：[排序键](./0049-group-anagrams/sorted-key/summary.zh-CN.md)、[计数键](./0049-group-anagrams/count-key/summary.zh-CN.md) | 本目录 | 3.2 计数；3.3 按规范形式分组 | 排序后的字符串或 `[26]int` 计数向量作键，`map[键][]string` 一遍分组 |
 | [128. 最长连续序列](./0128-longest-consecutive-sequence/summary.zh-CN.md) | 本目录 | 3.1 存在性查询；3.4 只从起点出发 | 集合存全部元素；只从 `x-1` 不存在的 `x` 向后扩展，总时间 $`O(n)`$ |
-| [146. LRU 缓存](./0146-lru-cache/summary.zh-CN.md) | 本目录 | 3.6 给另一个结构加按键索引 | `map[int]*node` 存双向链表结点指针，链表按最近使用顺序排列，`get` 与 `put` 期望 $`O(1)`$ |
+| [146. LRU 缓存](./0146-lru-cache/summary.zh-CN.md) | 本目录 | 3.6 给另一个结构加按键索引 | `map[int]*dLinkedNode` 存双向链表结点指针，链表按最近使用顺序排列，`get` 与 `put` 期望 $`O(1)`$ |
 
 ## 6. CLRS 关联
 
