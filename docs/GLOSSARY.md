@@ -35,3 +35,5 @@
 | 规范形式 | canonical form | 为每个等价类选定的唯一代表；两个元素等价当且仅当它们的规范形式相同。 |
 | 完全不变量 | complete invariant | 对等价关系 $`\sim`$，满足 $`f(s) = f(t) \iff s \sim t`$ 的函数 $`f`$：等价的元素取值相同，取值相同的元素等价。 |
 | 直接寻址表 | direct-address table | 关键字取自小全域 $`\{0, \ldots, m-1\}`$ 时，以关键字本身为数组下标存取元素的表，各操作最坏 $`O(1)`$。 |
+| 镜像（二叉树） | mirror (of a binary tree) | 把每个结点的左右子树互换得到的二叉树：$`M(\varnothing) = \varnothing`$，$`M((r, L, R)) = (r, M(R), M(L))`$。LeetCode 226 称之为“翻转”。 |
+| 对合 | involution | 作用两次等于恒等的变换，即 $`f(f(x)) = x`$；二叉树的镜像是对合。 |
