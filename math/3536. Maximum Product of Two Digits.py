@@ -1,3 +1,8 @@
+"""
+
+
+"""
+
 class Solution:
     def maxProduct(self, n: int) -> int:
         first, second = 0, 0
