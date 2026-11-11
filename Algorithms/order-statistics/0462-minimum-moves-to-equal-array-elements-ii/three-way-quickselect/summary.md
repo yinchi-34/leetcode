@@ -19,8 +19,8 @@ This page covers only how to find the median without sorting.
 - **Primary Category**: Order Statistics
 - **Secondary Category**: Randomized Algorithms
 - **Tags**: `Order Statistics`, `Randomized Algorithms`, `Median`, `Quickselect`, `Three-Way Partitioning`
-- **Code**: [solution.go](./solution.go)
-- **Tests**: [solution_test.go](../solution_test.go) (in the parent directory, shared by all three solutions)
+- **Code**: [solution.go](./solution.go) · [solution.py](./solution.py)
+- **Tests**: [solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py) (in the parent directory, shared by all three solutions)
 
 ### Difficulty Rating
 
@@ -214,6 +214,12 @@ Three-way partitioning can only make the next range shorter, so duplicates do no
 **Space Complexity: O(1) besides the recursion stack**
 
 Rearranges in place. The recursion depth is $`O(\log n)`$ in expectation and $`O(n)`$ in the worst case.
+
+### 4.6 Implementation Notes: Go and Python
+
+- **Recursion to a loop**: Go's `QuickSelect` is tail-recursive with expected depth $`O(\log n)`$. The Python version is a `while` loop, because CPython does not eliminate tail calls and stops at 1000 levels by default. See [recursion depth](./../../../../docs/LANGUAGE_NOTES.md#recursion-depth).
+- **In-place reordering**: both versions reorder the caller's array, so the tests pass a copy (`append([]int(nil), ...)` in Go, `nums.copy()` in Python).
+- **Random pivot**: Go's `rand.Intn(r-l+1) + l` is Python's `random.randint(l, r)`, which includes both ends.
 
 ## 5. Learning Notes
 

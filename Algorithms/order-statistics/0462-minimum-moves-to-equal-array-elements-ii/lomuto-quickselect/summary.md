@@ -19,8 +19,8 @@ This page covers only how it differs from the three-way version: the partition, 
 - **Primary Category**: Order Statistics
 - **Secondary Category**: Randomized Algorithms
 - **Tags**: `Order Statistics`, `Randomized Algorithms`, `Median`, `Quickselect`, `Lomuto Partition`
-- **Code**: [solution.go](./solution.go)
-- **Tests**: [solution_test.go](../solution_test.go) (in the parent directory, shared by all three solutions)
+- **Code**: [solution.go](./solution.go) · [solution.py](./solution.py)
+- **Tests**: [solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py) (in the parent directory, shared by all three solutions)
 
 ### Difficulty Rating
 
@@ -181,6 +181,12 @@ The final sum is one $`\Theta(n)`$ pass.
 **Space Complexity: O(1) besides the recursion stack**
 
 Rearranges in place. The recursion depth is $`O(\log n)`$ in expectation and $`O(n)`$ in the worst case; on an all-equal array it is $`\Theta(n)`$.
+
+### 4.6 Implementation Notes: Go and Python
+
+- **Recursion to a loop**: in this solution the rewrite is required. With many duplicates, each partition removes only one element and the recursion is nearly $`n`$ levels deep. Go's stack grows on demand and copes; CPython raises `RecursionError` at 1000 levels by default. The Python version is therefore a `while` loop. See [recursion depth](./../../../../docs/LANGUAGE_NOTES.md#recursion-depth).
+- **Cost of the degenerate case**: the same $`\Theta(n^2)`$ degradation is far slower in Python, so neither language's tests run this solution on a large all-equal array.
+- **Random pivot**: Go's `rand.Intn(r-l+1) + l` is Python's `random.randint(l, r)`, which includes both ends.
 
 ## 5. Learning Notes
 

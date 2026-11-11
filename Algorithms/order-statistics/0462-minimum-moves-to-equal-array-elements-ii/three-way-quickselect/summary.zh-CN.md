@@ -19,8 +19,8 @@
 - **主分类**：Order Statistics（顺序统计量）
 - **辅助分类**：Randomized Algorithms（随机化算法）
 - **技术标签**：`顺序统计量`、`随机化算法`、`中位数`、`快速选择`、`三路划分`
-- **代码**：[solution.go](./solution.go)
-- **测试**：[solution_test.go](../solution_test.go)（放在上一级目录，三种解法共用）
+- **代码**：[solution.go](./solution.go) · [solution.py](./solution.py)
+- **测试**：[solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py)（放在上一级目录，三种解法共用）
 
 ### 难度评分
 
@@ -214,6 +214,12 @@ $`\rho`$ 落在 $`[\lfloor s/4 \rfloor, \lceil 3s/4 \rceil)`$ 的概率至少 $`
 **空间复杂度：O(1)（不计递归栈）**
 
 原地重排。递归深度期望 $`O(\log n)`$，最坏 $`O(n)`$。
+
+### 4.6 实现细节：Go 与 Python（Implementation Notes）
+
+- **递归改循环**：Go 版的 `QuickSelect` 是尾递归，期望深度只有 $`O(\log n)`$。Python 版把它改写成 `while` 循环，因为 CPython 不做尾调用优化，默认递归上限是 1000 层。见[递归深度](./../../../../docs/LANGUAGE_NOTES.zh-CN.md#递归深度)。
+- **原地修改**：两种语言都会重排调用方的数组，测试传入副本（Go 用 `append([]int(nil), ...)`，Python 用 `nums.copy()`）。
+- **随机主元**：Go 的 `rand.Intn(r-l+1) + l` 对应 Python 的 `random.randint(l, r)`，后者两端都包含。
 
 ## 5. 思维难点（Learning Notes）
 
