@@ -66,7 +66,7 @@ This rating system is defined specifically for this repository.
 ### Rating Conventions
 
 - **Scope**: Clearly specify the problem, solution, input constraints, target complexity, and implementation language.
-- **Baseline knowledge**: The reader is assumed to understand basic Go syntax, arrays, slices, loops, and functions.
+- **Baseline knowledge**: The reader is assumed to understand basic Go and Python syntax, arrays, slices and lists, loops, and functions.
 - **Score range**: Each dimension receives an integer score from 1 to 5. Higher scores indicate greater difficulty. The scores are recorded independently and are not summed.
 - **Rating basis**: Choose the level that best matches the actual requirements of the solution and provide one concrete sentence explaining the rating.
 - **Consistency**: Ratings are based on the requirements of the solution rather than the evaluator's personal familiarity with the technique.
@@ -126,6 +126,8 @@ Direct proof, contradiction, induction, loop invariants, and exchange arguments 
 ### Implementation Difficulty
 
 Assuming the algorithm is already understood, how difficult is it to implement correctly in Go?
+
+Every problem also has a Python implementation, but this score is rated for the Go version only, so that scores stay comparable across problems. Section 4.6 of each note describes where Python is easier or harder, for example no overflow but a recursion limit.
 
 | Score | Criteria |
 | --- | --- |

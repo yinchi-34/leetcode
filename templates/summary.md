@@ -19,8 +19,8 @@ Use the [shared glossary](../docs/GLOSSARY.md) and follow the repository's [GitH
 - **Primary Category**: {{Algorithm Category}}
 - **Secondary Category**: {{Algorithm Category, optional}}
 - **Tags**: `{{Tag 1}}`, `{{Tag 2}}`
-- **Code**: [solution.go](./solution.go)
-- **Tests**: [solution_test.go](./solution_test.go)
+- **Code**: [solution.go](./solution.go) · [solution.py](./solution.py)
+- **Tests**: [solution_test.go](./solution_test.go) · [solution_test.py](./solution_test.py)
 
 ### Difficulty Rating
 
@@ -193,6 +193,10 @@ Let $`n`$ denote the input size.
 {{Analyze the memory required for variables, auxiliary data structures, recursion stacks, and output storage.}}
 
 {{If necessary, distinguish auxiliary space from total space including the output.}}
+
+### 4.6 Implementation Notes: Go and Python
+
+{{Only what genuinely differs between the two languages in this problem, such as integer range, negative modulo, copying and aliasing, recursion depth, or library differences; link each point to the matching section of the [Go and Python implementation notes](../docs/LANGUAGE_NOTES.md). If nothing differs in a way that matters, write "The two implementations correspond line by line."}}
 
 ## 5. Learning Notes
 
