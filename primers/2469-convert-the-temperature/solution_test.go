@@ -1,6 +1,9 @@
 package solution
 
-import "testing"
+import (
+	"math"
+	"testing"
+)
 
 func TestConvertTemperature(t *testing.T) {
 	tests := []struct {
@@ -16,19 +19,28 @@ func TestConvertTemperature(t *testing.T) {
 		{
 			name:     "Example 2",
 			celsius:  122.11,
-			expected: []float64{395.26, 251.80},
+			expected: []float64{395.26, 251.798},
+		},
+		{
+			name:     "Zero",
+			celsius:  0,
+			expected: []float64{273.15, 32.00},
 		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			result := convertTemperature(test.celsius)
-
 			if len(result) != len(test.expected) {
-				t.Errorf("convertTemperature(%f) = %v; expected %v", test.celsius, result, test.expected)
-				return
+				t.Fatalf("convertTemperature(%f) = %v; expected %v", test.celsius, result, test.expected)
 			}
-	})
+			// Floating-point results are compared within the 1e-5 tolerance
+			// the problem allows, not with ==.
+			for i := range result {
+				if math.Abs(result[i]-test.expected[i]) > 1e-5 {
+					t.Errorf("convertTemperature(%f) = %v; expected %v", test.celsius, result, test.expected)
+				}
+			}
+		})
+	}
 }
-}
-
