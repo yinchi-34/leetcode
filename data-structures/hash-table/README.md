@@ -46,7 +46,29 @@ Notes:
 - **Iteration order is randomized** and may differ on every run. An answer must not depend on it; collect and sort the keys when order matters.
 - When the size is known in advance, `make(map[int]bool, n)` allocates once and avoids regrowth.
 
-### 2.3 Space
+### 2.3 In Python
+
+Python's `dict` and `set` are hash tables too, and they also grow automatically:
+
+```python
+m = {}                    # empty table
+m[k] = v                  # insert / update
+v = m.get(k)              # search: None when absent, while m[k] raises KeyError
+del m[k]                  # delete
+n = len(m)                # number of elements
+s = set(nums)             # a set; k in s tests membership
+```
+
+Main differences from Go:
+
+- **Reading a missing key raises `KeyError`**. For counting, use `m.get(k, 0)`, `collections.Counter`, or `collections.defaultdict(int)`.
+- **Use `set` for sets**; no `dict` is needed.
+- **`dict` iterates in insertion order**, so results are reproducible; `set` order is not guaranteed and must not be relied on.
+- **Keys must be hashable**: a `list` cannot be a key; convert it to a `tuple`.
+
+See the [Go and Python implementation notes](../../docs/LANGUAGE_NOTES.md#hash-tables) for more.
+
+### 2.4 Space
 
 A hash table uses $`O(n)`$ extra space, where $`n`$ is the number of **distinct** keys. Trading this space for time typically turns $`O(n^2)`$ or $`O(n \log n)`$ into $`O(n)`$.
 
@@ -71,6 +93,7 @@ Each pattern lists what the table stores and when it applies. New problems are a
 - **When it applies**: elements that are equivalent under some transformation must be grouped. The key step is designing a canonical form that maps equivalent elements to the same key, such as the sorted string of an anagram.
 - **Requirement on the key**: the key must be a **complete invariant** of the equivalence relation: equivalent elements have equal keys, and elements with equal keys are equivalent. Satisfying only the first merges different groups; satisfying only the second splits a group.
 - **In Go**: a slice cannot be a `map` key; convert it to a `string`, or, when the value range is small, use a fixed-length array (such as `[26]int`) as the key.
+- **In Python**: a `list` cannot be a `dict` key; convert it to a `str` or a `tuple` (such as `tuple(cnt)`).
 
 ### 3.4 Start only from chain heads: avoid rescanning
 

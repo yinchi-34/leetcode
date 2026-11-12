@@ -18,8 +18,8 @@ This page only covers how to compute a valid key without sorting.
 - **Primary Category**: Hash Table
 - **Secondary Category**: Counting
 - **Tags**: `Hash Table`, `Counting`, `Direct-Address Table`, `Canonical Form`, `Group by Key`, `Equivalence Classes`
-- **Code**: [solution.go](./solution.go)
-- **Tests**: [solution_test.go](../solution_test.go) (in the parent directory, shared by both solutions)
+- **Code**: [solution.go](./solution.go) · [solution.py](./solution.py)
+- **Tests**: [solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py) (in the parent directory, shared by both solutions)
 
 ### Difficulty Rating
 
@@ -160,6 +160,12 @@ Here $`|\Sigma| = 26`$ is a constant, so this is expected $`O(n + L)`$, the same
 - `res`: $`O(g)`$.
 
 The total space is $`O(n + g|\Sigma|) \le O(n|\Sigma|)`$. Excluding the output, the extra space is $`O(g|\Sigma|)`$, which is $`O(n|\Sigma|)`$ in the worst case.
+
+### 4.6 Implementation Notes: Go and Python
+
+- **Key type**: the key difference in this solution. A Go array `[26]int` is comparable and can be a `map` key directly. A Python `list` is unhashable and cannot be a `dict` key, so the counts become `tuple(cnt)`. See [hash tables](../../../../docs/LANGUAGE_NOTES.md#hash-tables).
+- **Letter to index**: `s[i] - 'a'` in Go, `ord(c) - ord("a")` in Python. See [strings](../../../../docs/LANGUAGE_NOTES.md#strings).
+- **Group order**: as in the [sorted-key](../sorted-key/summary.md) solution, Go's group order is random and Python's follows insertion.
 
 ## 5. Learning Notes
 

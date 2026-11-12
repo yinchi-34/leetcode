@@ -11,8 +11,8 @@
 - **主分类**：Hash Table（散列表）
 - **辅助分类**：Amortized Analysis（摊还分析）
 - **技术标签**：`散列表`、`散列集合`、`摊还分析`、`段首枚举`
-- **代码**：[solution.go](./solution.go)
-- **测试**：[solution_test.go](./solution_test.go)
+- **代码**：[solution.go](./solution.go) · [solution.py](./solution.py)
+- **测试**：[solution_test.go](./solution_test.go) · [solution_test.py](./solution_test.py)
 
 ### 难度评分
 
@@ -194,6 +194,12 @@ $`S`$ 被划分成若干个互不相交的极大连续段，每段由唯一的�
 **空间复杂度：O(n)**
 
 散列集合保存 $`m \le n`$ 个不同值，额外空间 $`O(m) = O(n)`$；其余只有常数个变量。
+
+### 4.6 实现细节：Go 与 Python（Implementation Notes）
+
+- **集合**：Go 用 `map[int]bool`，读不存在的键得到 `false`，所以 `numSet[num-1]` 本身就是存在性判断。Python 直接用 `set`，写 `num - 1 not in num_set`。见[哈希表](../../../docs/LANGUAGE_NOTES.zh-CN.md#哈希表)。
+- **段长**：Go 版用计数器 `currentStreak` 累加；Python 版用 `current - num + 1` 算出段长，两者等价。
+- 其余逐行对应，整数范围也没有差异。
 
 ## 5. 思维难点（Learning Notes）
 

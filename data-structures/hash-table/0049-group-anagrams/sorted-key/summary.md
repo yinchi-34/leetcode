@@ -16,8 +16,8 @@ This problem has two solutions in two directories that share one set of test cas
 - **Primary Category**: Hash Table
 - **Secondary Category**: Sorting
 - **Tags**: `Hash Table`, `Sorting`, `Canonical Form`, `Group by Key`, `Equivalence Classes`
-- **Code**: [solution.go](./solution.go)
-- **Tests**: [solution_test.go](../solution_test.go) (in the parent directory, shared by both solutions)
+- **Code**: [solution.go](./solution.go) · [solution.py](./solution.py)
+- **Tests**: [solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py) (in the parent directory, shared by both solutions)
 
 ### Difficulty Rating
 
@@ -209,6 +209,12 @@ The separate $`n`$ term is there because an empty string has $`\ell_i = 0`$ yet 
 - `res`: $`g`$ slice headers, $`O(g)`$.
 
 The total space including the output is $`O(n + L)`$. Excluding the output (the $`n`$ string headers and `res`), the keys still need $`O(g + L)`$, which is $`O(n + L)`$ in the worst case where no two strings are anagrams.
+
+### 4.6 Implementation Notes: Go and Python
+
+- **Building the key**: Go converts to `[]byte`, sorts with `slices.Sort`, and converts back to `string`; Python writes `"".join(sorted(s))`. Both are $`O(k \log k)`$.
+- **Group order**: Go randomizes `map` iteration, so the groups may come back in a different order on every run; Python's `dict` iterates in insertion order, so the groups come back in the order their first member appears. The problem accepts any order, and the tests sort the groups before comparing. See [hash tables](../../../../docs/LANGUAGE_NOTES.md#hash-tables).
+- **Appending to a group**: Go's `groups[key] = append(groups[key], s)` relies on a missing key reading as `nil`; Python uses `defaultdict(list)`.
 
 ## 5. Learning Notes
 
