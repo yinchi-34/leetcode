@@ -19,8 +19,8 @@
 - **主分类**：Order Statistics（顺序统计量）
 - **辅助分类**：Randomized Algorithms（随机化算法）
 - **技术标签**：`顺序统计量`、`随机化算法`、`中位数`、`快速选择`、`Lomuto 划分`
-- **代码**：[solution.go](./solution.go)
-- **测试**：[solution_test.go](../solution_test.go)（放在上一级目录，三种解法共用）
+- **代码**：[solution.go](./solution.go) · [solution.py](./solution.py)
+- **测试**：[solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py)（放在上一级目录，三种解法共用）
 
 ### 难度评分
 
@@ -181,6 +181,12 @@ $`n = 10^5`$ 时约 $`3.75 \times 10^9`$，实测约 $`3.7 \times 10^9`$ 次比�
 **空间复杂度：O(1)（不计递归栈）**
 
 原地重排。递归深度期望 $`O(\log n)`$，最坏 $`O(n)`$；全相等时深度为 $`\Theta(n)`$。
+
+### 4.6 实现细节：Go 与 Python（Implementation Notes）
+
+- **递归改循环**：这一点在本解法中是必需的。重复元素多时，每次划分只排除一个元素，递归深度接近 $`n`$。Go 的栈会自动增长，可以撑住；CPython 默认 1000 层就会抛出 `RecursionError`。所以 Python 版把尾递归改写成 `while` 循环。见[递归深度](./../../../../docs/LANGUAGE_NOTES.zh-CN.md#递归深度)。
+- **退化时的耗时**：同样的 $`\Theta(n^2)`$ 退化，Python 比 Go 慢得多，所以两种语言的测试都不对本解法跑全等的大数组。
+- **随机主元**：Go 的 `rand.Intn(r-l+1) + l` 对应 Python 的 `random.randint(l, r)`，后者两端都包含。
 
 ## 5. 思维难点（Learning Notes）
 

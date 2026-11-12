@@ -19,8 +19,8 @@ Algorithms/<分类>/<题目录>/ 或 data-structures/<分类>/<题目录>/。
 - **主分类**：{{English Category（中文分类）}}
 - **辅助分类**：{{English Category（中文分类），可省略}}
 - **技术标签**：`{{标签1}}`、`{{标签2}}`
-- **代码**：[solution.go](./solution.go)
-- **测试**：[solution_test.go](./solution_test.go)
+- **代码**：[solution.go](./solution.go) · [solution.py](./solution.py)
+- **测试**：[solution_test.go](./solution_test.go) · [solution_test.py](./solution_test.py)
 
 ### 难度评分
 
@@ -193,6 +193,10 @@ ALGORITHM(input)
 {{分析辅助变量、数据结构、递归栈及输出空间}}
 
 {{必要时单独说明不计输出的额外空间复杂度}}
+
+### 4.6 实现细节：Go 与 Python（Implementation Notes）
+
+{{只写本题中两种语言真正不同的地方，例如整数范围、负数取模、拷贝与别名、递归深度、库函数差异；每条链接到 [Go 与 Python 实现差异](../docs/LANGUAGE_NOTES.zh-CN.md) 的对应小节。没有值得注意的差异时写“两种实现逐行对应，无需特别处理”。}}
 
 ## 5. 思维难点（Learning Notes）
 

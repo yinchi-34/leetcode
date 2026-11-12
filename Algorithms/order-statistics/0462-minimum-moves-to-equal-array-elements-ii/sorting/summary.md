@@ -17,8 +17,8 @@ This problem has three solutions in three directories that share one set of test
 - **Primary Category**: Order Statistics
 - **Secondary Category**: Sorting
 - **Tags**: `Order Statistics`, `Sorting`, `Median`
-- **Code**: [solution.go](./solution.go)
-- **Tests**: [solution_test.go](../solution_test.go) (in the parent directory, shared by all three solutions)
+- **Code**: [solution.go](./solution.go) · [solution.py](./solution.py)
+- **Tests**: [solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py) (in the parent directory, shared by all three solutions)
 
 ### Difficulty Rating
 
@@ -170,6 +170,11 @@ Sorting takes $`O(n \log n)`$ and the sum one $`\Theta(n)`$ pass.
 $`\Theta(n)`$ for the copy, plus $`O(\log n)`$ stack space for `sort.Ints`. If modifying the input is allowed, sorting in place avoids the copy.
 
 **Numeric range**: $`f(b_m) \le n \cdot 2 \cdot 10^9 = 2 \times 10^{14}`$, which fits in a 64-bit `int`; the problem also guarantees the answer fits in 32 bits.
+
+### 4.6 Implementation Notes: Go and Python
+
+- **Leaving the input unchanged**: Go's `sort.Ints` sorts in place, so the code copies with `append([]int(nil), nums...)` first. Python's `sorted(nums)` already returns a new list. See [slices and lists](./../../../../docs/LANGUAGE_NOTES.md#slices-and-lists-aliasing-and-copying).
+- **Integer range**: the sum of distances is at most about $`10^5 \times 2 \times 10^9 = 2 \times 10^{14}`$, within Go's 64-bit `int`. Python cannot overflow.
 
 ## 5. Learning Notes
 

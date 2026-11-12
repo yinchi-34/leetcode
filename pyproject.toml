@@ -1,0 +1,15 @@
+[project]
+name = "leetcode"
+version = "0.0.0"
+description = "LeetCode solutions and study notes in Go and Python"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+# Mirror Go's naming: tests live in solution_test.py next to solution_test.go.
+python_files = ["solution_test.py"]
+# Every problem directory has its own solution.py, so the default import mode
+# would see duplicate module names. importlib mode imports each test file by path.
+addopts = ["--import-mode=importlib"]
+# Lets test files import the shared loader with `from testutil import load_solution`.
+pythonpath = ["."]
+testpaths = ["Algorithms", "data-structures", "primers"]

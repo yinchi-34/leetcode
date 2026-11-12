@@ -17,8 +17,8 @@
 - **主分类**：Order Statistics（顺序统计量）
 - **辅助分类**：Sorting（排序）
 - **技术标签**：`顺序统计量`、`排序`、`中位数`
-- **代码**：[solution.go](./solution.go)
-- **测试**：[solution_test.go](../solution_test.go)（放在上一级目录，三种解法共用）
+- **代码**：[solution.go](./solution.go) · [solution.py](./solution.py)
+- **测试**：[solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py)（放在上一级目录，三种解法共用）
 
 ### 难度评分
 
@@ -170,6 +170,11 @@ f(x+1) - f(x) = L(x) - \bigl(n - L(x)\bigr) = 2L(x) - n .
 复制数组 $`\Theta(n)`$，加上 `sort.Ints` 的 $`O(\log n)`$ 栈空间。若允许修改输入，可以原地排序，省去复制。
 
 **数值范围**：$`f(b_m) \le n \cdot 2 \cdot 10^9 = 2 \times 10^{14}`$，在 64 位 `int` 范围内；题目还保证答案在 32 位范围内。
+
+### 4.6 实现细节：Go 与 Python（Implementation Notes）
+
+- **不修改输入**：Go 的 `sort.Ints` 原地排序，所以先用 `append([]int(nil), nums...)` 复制。Python 的 `sorted(nums)` 本身返回新列表，不需要手动复制。见[切片与列表](./../../../../docs/LANGUAGE_NOTES.zh-CN.md#切片与列表别名和拷贝)。
+- **整数范围**：差的绝对值之和最大约 $`10^5 \times 2 \times 10^9 = 2 \times 10^{14}`$，在 Go 的 64 位 `int` 内。Python 没有溢出问题。
 
 ## 5. 思维难点（Learning Notes）
 
