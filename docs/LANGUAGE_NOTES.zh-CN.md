@@ -48,6 +48,7 @@ Go 切片和 Python 列表都是对底层数据的引用，赋值不会复制。
 Go 的栈会自动增长，递归几十万层通常没问题。CPython 默认递归上限是 1000 层，并且不做尾调用优化。
 
 - 递归深度可能达到 n 时（链状的树、退化的快速选择、网格 DFS），Python 改写成循环或显式栈，或者调用 `sys.setrecursionlimit`。
+- 例：[0104 二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/)，单链时深度 $`10^4`$，Python 版调高了递归上限。
 - 例：[0462 快速选择](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/)的 Python 版把尾递归改成了 `while` 循环。
 
 ## 排序

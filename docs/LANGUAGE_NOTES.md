@@ -48,6 +48,7 @@ Go slices and Python lists both refer to underlying data, so assignment does not
 Go stacks grow on demand, so hundreds of thousands of levels usually work. CPython's default recursion limit is 1000, and it does not eliminate tail calls.
 
 - When the depth can reach n (a path-shaped tree, a degenerate quickselect, a grid DFS), rewrite the Python version as a loop or with an explicit stack, or raise `sys.setrecursionlimit`.
+- Example: [0104 maximum depth of binary tree](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/). A chain is $`10^4`$ levels deep, so the Python version raises the recursion limit.
 - Example: the Python [0462 quickselect](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/) turns the tail recursion into a `while` loop.
 
 ## Sorting
