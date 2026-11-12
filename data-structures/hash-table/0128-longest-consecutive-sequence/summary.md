@@ -11,8 +11,8 @@ Use the [shared glossary](../../../docs/GLOSSARY.md) and follow the repository's
 - **Primary Category**: Hash Table
 - **Secondary Category**: Amortized Analysis
 - **Tags**: `Hash Table`, `Hash Set`, `Amortized Analysis`, `Run-Head Enumeration`
-- **Code**: [solution.go](./solution.go)
-- **Tests**: [solution_test.go](./solution_test.go)
+- **Code**: [solution.go](./solution.go) · [solution.py](./solution.py)
+- **Tests**: [solution_test.go](./solution_test.go) · [solution_test.py](./solution_test.py)
 
 ### Difficulty Rating
 
@@ -194,6 +194,12 @@ The total is expected $`O(n + m) = O(n)`$. If hashing collided badly, a single o
 **Space complexity: O(n)**
 
 The hash set stores $`m \le n`$ distinct values, for $`O(m) = O(n)`$ extra space; everything else is a constant number of variables.
+
+### 4.6 Implementation Notes: Go and Python
+
+- **Set**: Go uses `map[int]bool`, where a missing key reads as `false`, so `numSet[num-1]` alone tests membership. Python uses a `set` and writes `num - 1 not in num_set`. See [hash tables](../../../docs/LANGUAGE_NOTES.md#hash-tables).
+- **Run length**: Go counts with `currentStreak`; Python computes `current - num + 1`. The two are equivalent.
+- Everything else corresponds line by line, and integer range is not an issue.
 
 ## 5. Learning Notes
 

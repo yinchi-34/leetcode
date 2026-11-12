@@ -16,8 +16,8 @@
 - **主分类**：Hash Table（散列表）
 - **辅助分类**：Sorting（排序）
 - **技术标签**：`散列表`、`排序`、`规范形式`、`按键分组`、`等价类`
-- **代码**：[solution.go](./solution.go)
-- **测试**：[solution_test.go](../solution_test.go)（放在上一级目录，两种解法共用）
+- **代码**：[solution.go](./solution.go) · [solution.py](./solution.py)
+- **测试**：[solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py)（放在上一级目录，两种解法共用）
 
 ### 难度评分
 
@@ -209,6 +209,12 @@ O\Bigl(n + \sum_{i} \ell_i \log \ell_i\Bigr) \le O(n + L \log k) \le O(n k \log 
 - `res`：$`g`$ 个切片头，$`O(g)`$。
 
 计入输出时总空间 $`O(n + L)`$；不计输出（即不计 $`n`$ 个字符串头和 `res`）时，额外空间仍要 $`O(g + L)`$ 存放键，最坏（没有任何两个字符串互为异位词）为 $`O(n + L)`$。
+
+### 4.6 实现细节：Go 与 Python（Implementation Notes）
+
+- **构造键**：Go 要先转成 `[]byte`，`slices.Sort` 排序后再转回 `string`；Python 一行写成 `"".join(sorted(s))`。两者都是 $`O(k \log k)`$。
+- **分组的顺序**：Go 的 `map` 遍历顺序随机，所以返回的组顺序每次可能不同；Python 的 `dict` 按插入顺序遍历，组按各自第一个元素出现的顺序返回。题目允许任意顺序，测试也先把分组排序再比较。见[哈希表](../../../../docs/LANGUAGE_NOTES.zh-CN.md#哈希表)。
+- **追加到组**：Go 的 `groups[key] = append(groups[key], s)` 依赖读不存在的键返回 `nil`；Python 用 `defaultdict(list)`。
 
 ## 5. 思维难点（Learning Notes）
 

@@ -11,8 +11,8 @@ Use the [shared glossary](../../../docs/GLOSSARY.md) and follow the repository's
 - **Primary Category**: Binary Tree
 - **Secondary Category**: Depth-First Search
 - **Tags**: `Binary Tree`, `Depth-First Search`, `Recursion`, `Postorder Traversal`
-- **Code**: [solution.go](./solution.go)
-- **Tests**: [solution_test.go](./solution_test.go)
+- **Code**: [solution.go](./solution.go) · [solution.py](./solution.py)
+- **Tests**: [solution_test.go](./solution_test.go) · [solution_test.py](./solution_test.py)
 
 ### Difficulty Rating
 
@@ -181,6 +181,12 @@ Four mutations of the implementation were checked, and each makes some case fail
 - Recursing only into the right subtree: `left_deeper` and `left_chain_max_nodes` fail.
 - Changing `max` to return the smaller value: every case except `empty_tree`, `single_node`, and `perfect_tree_depth_3` fails.
 - Returning 1 for the empty tree: every case fails.
+
+### 4.6 Implementation Notes: Go and Python
+
+- **Recursion depth**: the main difference here. There can be $`10^4`$ nodes, so a chain-shaped tree recurses $`10^4`$ levels deep. Go's stack grows on demand and needs nothing; CPython stops at 1000 levels by default and raises `RecursionError`. The Python version therefore calls `sys.setrecursionlimit(20_000)` at module level. A level-by-level BFS avoids recursion altogether. See [recursion depth](../../../docs/LANGUAGE_NOTES.md#recursion-depth).
+- **Null pointers**: `root == nil` in Go, `root is None` in Python. LeetCode provides `TreeNode` in both; the repository defines its own copy for the tests.
+- **`max`**: Go has a built-in `max` since 1.21, which the Go version shadows with its own function; Python uses the built-in `max`.
 
 ## 5. Learning Notes
 

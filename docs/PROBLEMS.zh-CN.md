@@ -19,10 +19,10 @@
 | 0453 | [最小操作次数使数组元素相等](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/) | 模拟 | Go | 🟡 中等 | — | 3 / 2 / 3 / 2<br>4 / 1 / 3 / 1 | [成批模拟](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md)<br>[公式](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/formula/summary.zh-CN.md) |
 | 1021 | [删除最外层的括号](../Algorithms/simulation/1021-remove-outermost-parentheses/) | 模拟 | Go | 🟢 简单 | 1311 | 2 / 1 / 2 / 2 | [中文](../Algorithms/simulation/1021-remove-outermost-parentheses/summary.zh-CN.md) · [English](../Algorithms/simulation/1021-remove-outermost-parentheses/summary.md) |
 | 4088 | [Difference Between Peaks and Valleys](../Algorithms/simulation/4088-difference-between-peaks-and-valleys/) | 模拟 | Go | — | — | — | 仅代码 |
-| 0104 | [二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/) | 二叉树 | Go | 🟢 简单 | — | 1 / 2 / 2 / 1 | [中文](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) · [English](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) |
-| 0049 | [字母异位词分组](../data-structures/hash-table/0049-group-anagrams/) | 哈希表 | Go | 🟡 中等 | — | 2 / 2 / 2 / 1<br>2 / 2 / 2 / 2 | [排序键](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.zh-CN.md)<br>[计数键](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) |
-| 0128 | [最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/) | 哈希表 | Go | 🟡 中等 | — | 3 / 2 / 3 / 2 | [中文](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) · [English](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) |
-| 0856 | [括号的分数](../data-structures/stack/0856-score-of-parentheses/) | 栈 | Go | 🟡 中等 | — | — | 仅代码 |
-| 2235 | [两整数相加](../primers/2235-add-two-integers-simple/) | 入门 | Go | 🟢 简单 | — | — | 仅代码 |
-| 2413 | [最小偶倍数](../primers/2413-smallest-even-multiple/) | 入门 | Go | 🟢 简单 | — | — | 仅代码 |
-| 2469 | [温度转换](../primers/2469-convert-the-temperature/) | 入门 | Go | 🟢 简单 | — | — | 仅代码 |
+| 0104 | [二叉树的最大深度](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/) | 二叉树 | Go · Python | 🟢 简单 | — | 1 / 2 / 2 / 1 | [中文](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.zh-CN.md) · [English](../data-structures/binary-tree/0104-maximum-depth-of-binary-tree/summary.md) |
+| 0049 | [字母异位词分组](../data-structures/hash-table/0049-group-anagrams/) | 哈希表 | Go · Python | 🟡 中等 | — | 2 / 2 / 2 / 1<br>2 / 2 / 2 / 2 | [排序键](../data-structures/hash-table/0049-group-anagrams/sorted-key/summary.zh-CN.md)<br>[计数键](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) |
+| 0128 | [最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/) | 哈希表 | Go · Python | 🟡 中等 | — | 3 / 2 / 3 / 2 | [中文](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) · [English](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) |
+| 0856 | [括号的分数](../data-structures/stack/0856-score-of-parentheses/) | 栈 | Go · Python | 🟡 中等 | — | — | 仅代码 |
+| 2235 | [两整数相加](../primers/2235-add-two-integers-simple/) | 入门 | Go · Python | 🟢 简单 | — | — | 仅代码 |
+| 2413 | [最小偶倍数](../primers/2413-smallest-even-multiple/) | 入门 | Go · Python | 🟢 简单 | — | — | 仅代码 |
+| 2469 | [温度转换](../primers/2469-convert-the-temperature/) | 入门 | Go · Python | 🟢 简单 | — | — | 仅代码 |

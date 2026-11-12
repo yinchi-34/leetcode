@@ -11,8 +11,8 @@
 - **主分类**：Binary Tree（二叉树）
 - **辅助分类**：Depth-First Search（深度优先搜索）
 - **技术标签**：`二叉树`、`深度优先搜索`、`递归`、`后序遍历`
-- **代码**：[solution.go](./solution.go)
-- **测试**：[solution_test.go](./solution_test.go)
+- **代码**：[solution.go](./solution.go) · [solution.py](./solution.py)
+- **测试**：[solution_test.go](./solution_test.go) · [solution_test.py](./solution_test.py)
 
 ### 难度评分
 
@@ -181,6 +181,12 @@ Go 的 goroutine 栈按需增长，$`10^4`$ 层递归可以正常运行。
 - 只递归右子树：`left_deeper`、`left_chain_max_nodes` 失败。
 - 把 `max` 改成取较小值：除 `empty_tree`、`single_node`、`perfect_tree_depth_3` 外的用例全部失败。
 - 空树返回 1：全部用例失败。
+
+### 4.6 实现细节：Go 与 Python（Implementation Notes）
+
+- **递归深度**：这是本题最大的差异。结点数可达 $`10^4`$，树退化成单链时递归深度也是 $`10^4`$。Go 的栈会自动增长，不需要处理；CPython 默认递归上限是 1000 层，会抛出 `RecursionError`。Python 版因此在模块开头调用 `sys.setrecursionlimit(20_000)`。另一种做法是改用 BFS 按层计数，就完全不需要递归。见[递归深度](../../../docs/LANGUAGE_NOTES.zh-CN.md#递归深度)。
+- **空指针**：Go 判断 `root == nil`，Python 判断 `root is None`。`TreeNode` 都由 LeetCode 提供，仓库里为了测试各自定义了一份。
+- **`max`**：Go 1.21 起有内置的 `max`，Go 版自己定义了一个同名函数并遮蔽了内置版本；Python 直接用内置 `max`。
 
 ## 5. 思维难点（Learning Notes）
 

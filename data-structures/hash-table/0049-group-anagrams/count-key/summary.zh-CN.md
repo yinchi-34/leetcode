@@ -18,8 +18,8 @@
 - **主分类**：Hash Table（散列表）
 - **辅助分类**：Counting（计数）
 - **技术标签**：`散列表`、`计数`、`直接寻址表`、`规范形式`、`按键分组`、`等价类`
-- **代码**：[solution.go](./solution.go)
-- **测试**：[solution_test.go](../solution_test.go)（放在上一级目录，两种解法共用）
+- **代码**：[solution.go](./solution.go) · [solution.py](./solution.py)
+- **测试**：[solution_test.go](../solution_test.go) · [solution_test.py](../solution_test.py)（放在上一级目录，两种解法共用）
 
 ### 难度评分
 
@@ -160,6 +160,12 @@ O\Bigl(\sum_i \bigl(\ell_i + |\Sigma|\bigr) + g\Bigr) = O(L + n|\Sigma|)
 - `res`：$`O(g)`$。
 
 总空间 $`O(n + g|\Sigma|) \le O(n|\Sigma|)`$。不计输出时额外空间为 $`O(g|\Sigma|)`$，最坏 $`O(n|\Sigma|)`$。
+
+### 4.6 实现细节：Go 与 Python（Implementation Notes）
+
+- **键的类型**：这是本解法的关键差异。Go 的数组 `[26]int` 可以比较，能直接作 `map` 的键。Python 的 `list` 不可哈希，不能作 `dict` 的键，要先转成 `tuple(cnt)`。见[哈希表](../../../../docs/LANGUAGE_NOTES.zh-CN.md#哈希表)。
+- **字母转下标**：Go 写 `s[i] - 'a'`，Python 写 `ord(c) - ord("a")`。见[字符串](../../../../docs/LANGUAGE_NOTES.zh-CN.md#字符串)。
+- **分组的顺序**：同[排序键](../sorted-key/summary.zh-CN.md)解法，Go 的组顺序随机，Python 按插入顺序。
 
 ## 5. 思维难点（Learning Notes）
 
