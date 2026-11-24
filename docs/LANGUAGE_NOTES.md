@@ -75,6 +75,13 @@ Go stacks grow on demand, so hundreds of thousands of levels usually work. CPyth
 - Queue: Go uses a slice with `q = q[1:]`. Python uses `collections.deque` and `popleft()`, never `list.pop(0)`, which is $`O(n)`$.
 - Stack: the end of a slice or list in both.
 
+## Greatest Common Divisor
+
+Go's standard library has no integer $`\gcd`$ (`GCD` in `math/big` is for big integers only), so write Euclid's algorithm yourself. Python has `math.gcd`, which accepts any number of arguments since 3.9, along with `math.lcm`.
+
+- When a window is maintained by dividing a product, Python must use `//`. Using `/` produces a float, and passing it to `math.gcd` raises `TypeError`.
+- Example: [3411 Maximum Subarray With Equal Products](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/): the Go version implements `gcd`; the Python version uses `math.gcd` and `//=`.
+
 ## Performance
 
 The same algorithm is often tens of times slower in Python than in Go. When the complexity fits but the constant is large (say $`10^7`$ loop iterations), Python may time out. Prefer built-ins (`sum`, `sorted`, `collections`), which run in C.

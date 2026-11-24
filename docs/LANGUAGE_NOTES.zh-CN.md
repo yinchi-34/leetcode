@@ -75,6 +75,13 @@ Go 的栈会自动增长，递归几十万层通常没问题。CPython 默认递
 - 队列：Go 用切片 `q = q[1:]`。Python 用 `collections.deque` 的 `popleft()`，不要用 `list.pop(0)`，它是 $`O(n)`$。
 - 栈：两者都用切片或列表的末尾。
 
+## 最大公约数
+
+Go 标准库没有整数版的 $`\gcd`$（`math/big` 的 `GCD` 只用于大整数），要自己写欧几里得算法。Python 直接用 `math.gcd`，从 3.9 起还接受多个参数，并有 `math.lcm`。
+
+- 用乘积整除维护窗口时，Python 要写 `//`。写成 `/` 会得到浮点数，之后传给 `math.gcd` 会抛出 `TypeError`。
+- 例：[3411 最长乘积等价子数组](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/)，Go 版自己实现 `gcd`，Python 版用 `math.gcd` 和 `//=`。
+
 ## 性能
 
 同样的算法，Python 通常比 Go 慢几十倍。复杂度够用但常数大时（例如 $`10^7`$ 次循环），Python 可能超时。优先使用内置函数（`sum`、`sorted`、`collections`），它们在 C 层实现。

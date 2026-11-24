@@ -28,6 +28,7 @@ Each section gets one table:
 | [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | Lemma 3 uses the invariant "`cnt` holds the letter counts of the prefix", proved by initialization, maintenance, and termination, to show the counts are correct |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Lemma 1's inner invariant and the outer invariant "`res` is the longest run among processed heads" are each proved by initialization, maintenance, and termination |
 | [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Direct | The batched simulation is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
+| [3411. Maximum Subarray With Equal Products](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/summary.md) | Direct | The invariant "`left` is the left end of the longest pairwise coprime subarray ending at $`r-1`$" is proved by initialization, maintenance, and termination |
 | [54. Spiral Matrix](../Algorithms/simulation/0054-spiral-matrix/summary.md) | Direct | Proves correctness with the outer-loop invariant "the elements not yet output form a nonempty rectangle, and the output so far followed by its spiral order is the answer" in the initialization, maintenance, and termination steps, with a case split over four degenerate shapes: one row, one column, two rows, two columns |
 
 ## Chapter 3 Growth of Functions
@@ -131,12 +132,27 @@ Each section gets one table:
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | The inner `while` runs $`m - (\text{number of heads}) \le m`$ times in total, counted over the whole algorithm rather than per loop |
+| [3411. Maximum Subarray With Equal Products](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/summary.md) | Direct | `left` never decreases, so the inner `while` body runs at most $`n`$ times in total instead of being bounded per iteration |
 
 ### §17.3 The potential method
 
 | Problem | Relation | How It Appears Here |
 |---|---|---|
 | [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Related idea | The state is measured by $`\Phi = \sum x_i - n \cdot \min x`$, and bounding $`\Delta\Phi \ge -1`$ per move yields the lower bound; here it proves a lower bound rather than performing amortized analysis |
+
+## Chapter 31 Number-Theoretic Algorithms
+
+### §31.1 Elementary number-theoretic notions
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [3411. Maximum Subarray With Equal Products](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/summary.md) | Direct | Lemmas 1 and 2 compare the exponent of every prime on both sides via unique factorization, and characterize pairwise coprimality as "each prime divides at most one element" |
+
+### §31.2 Greatest common divisor
+
+| Problem | Relation | How It Appears Here |
+|---|---|---|
+| [3411. Maximum Subarray With Equal Products](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/summary.md) | Direct | `gcd(prod, x)` uses repeated remainders to decide whether a new element can join the window, in $`O(\log C)`$ steps |
 
 ## Appendix B Sets, Etc.
 

@@ -28,6 +28,7 @@
 | [49. 字母异位词分组（计数键）](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) | 直接对应 | 引理 3 用“`cnt` 是前缀中各字母的出现次数”的不变式，按初始化、保持、终止三步证明计数正确 |
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | 引理 1 的内层不变式与外层“`res` 是已处理段首的最大段长”的不变式，都按初始化、保持、终止三步证明 |
 | [453. 最小操作次数使数组元素相等（成批模拟）](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md) | 直接对应 | 成批模拟用“前缀相等、后缀从未被跳过”的不变式，按初始化、保持、终止三步证明 |
+| [3411. 最长乘积等价子数组](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/summary.zh-CN.md) | 直接对应 | 用“`left` 等于以 $`r-1`$ 结尾的最长两两互质子数组的左端点”的不变式，按初始化、保持、终止三步证明 |
 | [54. 螺旋矩阵](../Algorithms/simulation/0054-spiral-matrix/summary.zh-CN.md) | 直接对应 | 用“未输出元素恰好是非空矩形，且已输出部分加上它的螺旋顺序就是答案”的外层循环不变式，按初始化、保持、终止三步证明，并对单行、单列、两行、两列四种退化形状分类讨论 |
 
 ## 第 3 章 函数的增长
@@ -131,12 +132,27 @@
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | 内层 `while` 的总执行次数为 $`m - (\text{段首个数}) \le m`$，不逐次估计 |
+| [3411. 最长乘积等价子数组](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/summary.zh-CN.md) | 直接对应 | `left` 只增不减，内层 `while` 循环体总共至多执行 $`n`$ 次，不逐次估计 |
 
 ### §17.3 势能法
 
 | 题目 | 关联程度 | 本题中的体现 |
 |---|---|---|
 | [453. 最小操作次数使数组元素相等（成批模拟）](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md) | 相关思想 | 用 $`\Phi = \sum x_i - n \cdot \min x`$ 刻画状态，界定每步 $`\Delta\Phi \ge -1`$ 得到步数下界；这里用于证明下界，不是做摊还分析 |
+
+## 第 31 章 数论算法
+
+### §31.1 初等数论概念
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [3411. 最长乘积等价子数组](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/summary.zh-CN.md) | 直接对应 | 引理 1、引理 2 用唯一质因数分解比较两边每个质数的指数，并以“每个质数至多整除一个元素”刻画两两互质 |
+
+### §31.2 最大公约数
+
+| 题目 | 关联程度 | 本题中的体现 |
+|---|---|---|
+| [3411. 最长乘积等价子数组](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/summary.zh-CN.md) | 直接对应 | `gcd(prod, x)` 用辗转相除判断新元素能否加入窗口，每次 $`O(\log C)`$ 步 |
 
 ## 附录 B 集合等离散数学内容
 
