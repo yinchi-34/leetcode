@@ -28,6 +28,7 @@
 | [49. 字母异位词分组（计数键）](../data-structures/hash-table/0049-group-anagrams/count-key/summary.zh-CN.md) | 直接对应 | 引理 3 用“`cnt` 是前缀中各字母的出现次数”的不变式，按初始化、保持、终止三步证明计数正确 |
 | [128. 最长连续序列](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.zh-CN.md) | 直接对应 | 引理 1 的内层不变式与外层“`res` 是已处理段首的最大段长”的不变式，都按初始化、保持、终止三步证明 |
 | [453. 最小操作次数使数组元素相等（成批模拟）](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md) | 直接对应 | 成批模拟用“前缀相等、后缀从未被跳过”的不变式，按初始化、保持、终止三步证明 |
+| [54. 螺旋矩阵](../Algorithms/simulation/0054-spiral-matrix/summary.zh-CN.md) | 直接对应 | 用“未输出元素恰好是非空矩形，且已输出部分加上它的螺旋顺序就是答案”的外层循环不变式，按初始化、保持、终止三步证明，并对单行、单列、两行、两列四种退化形状分类讨论 |
 
 ## 第 3 章 函数的增长
 

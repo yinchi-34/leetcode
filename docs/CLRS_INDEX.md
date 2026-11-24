@@ -28,6 +28,7 @@ Each section gets one table:
 | [49. Group Anagrams (count key)](../data-structures/hash-table/0049-group-anagrams/count-key/summary.md) | Direct | Lemma 3 uses the invariant "`cnt` holds the letter counts of the prefix", proved by initialization, maintenance, and termination, to show the counts are correct |
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Lemma 1's inner invariant and the outer invariant "`res` is the longest run among processed heads" are each proved by initialization, maintenance, and termination |
 | [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Direct | The batched simulation is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
+| [54. Spiral Matrix](../Algorithms/simulation/0054-spiral-matrix/summary.md) | Direct | Proves correctness with the outer-loop invariant "the elements not yet output form a nonempty rectangle, and the output so far followed by its spiral order is the answer" in the initialization, maintenance, and termination steps, with a case split over four degenerate shapes: one row, one column, two rows, two columns |
 
 ## Chapter 3 Growth of Functions
 
