@@ -31,6 +31,19 @@ Go 切片和 Python 列表都是对底层数据的引用，赋值不会复制。
 - Go 的 `append` 可能写入调用方切片的底层数组，Python 的 `append` 只改这一个列表。
 - 例：[0462 排序解法](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/sorting/)，Go 要手动复制，Python 的 `sorted()` 本身返回新列表。
 
+## 区间循环与倒序遍历
+
+Go 的三段式 `for` 自己写终止条件，终点包含与否一目了然。Python 的 `range(start, stop, step)` 不包含 `stop`，倒序时要把终点再往外移一格。
+
+| 遍历 | Go | Python |
+| --- | --- | --- |
+| 正序 `l..r`（含两端） | `for i := l; i <= r; i++` | `range(l, r + 1)` |
+| 倒序 `r..l`（含两端） | `for i := r; i >= l; i--` | `range(r, l - 1, -1)` |
+
+- 两者在起点已经越过终点时都执行 0 次，不会报错。
+- Python 倒序最常见的错误是写成 `range(r, l, -1)`，漏掉 `l` 本身。`range(r, l - 1, -1)` 在 `l = 0` 时正好是 `range(r, -1, -1)`，不需要特判。
+- 例：[0054 螺旋矩阵](../Algorithms/simulation/0054-spiral-matrix/)，下行和左列是倒序遍历，两种语言的四个边界检查位置完全相同。
+
 ## 哈希表
 
 - Go `map` 的遍历顺序是随机的，Python `dict` 按插入顺序遍历。测试不能依赖 Go map 的顺序。

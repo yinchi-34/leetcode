@@ -2,7 +2,7 @@
 
 [English](PROBLEMS.md) | 简体中文
 
-共 20 题，其中 13 题已有中英文题解。四维评分依次为**建模 / 知识门槛 / 正确性论证 / 实现**，每项 1～5 分，含义见[难度评分标准](RATING.zh-CN.md)。“代码”一栏列出已实现的语言，所有题目最终都会同时有 Go 和 Python。新增题目时请同步更新本表。
+共 21 题，其中 14 题已有中英文题解。四维评分依次为**建模 / 知识门槛 / 正确性论证 / 实现**，每项 1～5 分，含义见[难度评分标准](RATING.zh-CN.md)。“代码”一栏列出已实现的语言，所有题目最终都会同时有 Go 和 Python。新增题目时请同步更新本表。
 
 | 题号 | 题目 | 分类 | 代码 | 难度 | zerotrac | 四维评分 | 题解 |
 | :-: | --- | --- | :-: | --- | :-: | :-: | --- |
@@ -15,6 +15,7 @@
 | 1541 | [平衡括号字符串的最少插入次数](../Algorithms/greedy-algorithms/1541-minimum-insertions-to-balance-a-parentheses-string/) | 贪心 | Go | 🟡 中等 | 1759 | 3 / 2 / 3 / 3 | [中文](../Algorithms/greedy-algorithms/1541-minimum-insertions-to-balance-a-parentheses-string/summary.zh-CN.md) · [English](../Algorithms/greedy-algorithms/1541-minimum-insertions-to-balance-a-parentheses-string/summary.md) |
 | 3727 | [最大交替平方和](../Algorithms/greedy-algorithms/3727-maximum-alternating-sum-of-squares/) | 贪心 | Go | 🟡 中等 | 1455 | 2 / 1 / 2 / 1 | [中文](../Algorithms/greedy-algorithms/3727-maximum-alternating-sum-of-squares/summary.zh-CN.md) · [English](../Algorithms/greedy-algorithms/3727-maximum-alternating-sum-of-squares/summary.md) |
 | 0462 | [最小操作次数使数组元素相等 II](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/) | 顺序统计量 | Go · Python | 🟡 中等 | — | 2 / 1 / 2 / 1<br>2 / 3 / 4 / 3<br>2 / 3 / 4 / 2 | [排序](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/sorting/summary.zh-CN.md)<br>[三路划分快速选择](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/three-way-quickselect/summary.zh-CN.md)<br>[两路划分快速选择](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/lomuto-quickselect/summary.zh-CN.md) |
+| 0054 | [螺旋矩阵](../Algorithms/simulation/0054-spiral-matrix/) | 模拟 | Go · Python | 🟡 中等 | — | 1 / 1 / 3 / 3 | [中文](../Algorithms/simulation/0054-spiral-matrix/summary.zh-CN.md) · [English](../Algorithms/simulation/0054-spiral-matrix/summary.md) |
 | 0118 | [杨辉三角](../Algorithms/simulation/0118-pascals-triangle/) | 模拟 | Go | 🟢 简单 | — | 1 / 1 / 2 / 2 | [中文](../Algorithms/simulation/0118-pascals-triangle/summary.zh-CN.md) · [English](../Algorithms/simulation/0118-pascals-triangle/summary.md) |
 | 0453 | [最小操作次数使数组元素相等](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/) | 模拟 | Go | 🟡 中等 | — | 3 / 2 / 3 / 2<br>4 / 1 / 3 / 1 | [成批模拟](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.zh-CN.md)<br>[公式](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/formula/summary.zh-CN.md) |
 | 1021 | [删除最外层的括号](../Algorithms/simulation/1021-remove-outermost-parentheses/) | 模拟 | Go | 🟢 简单 | 1311 | 2 / 1 / 2 / 2 | [中文](../Algorithms/simulation/1021-remove-outermost-parentheses/summary.zh-CN.md) · [English](../Algorithms/simulation/1021-remove-outermost-parentheses/summary.md) |
