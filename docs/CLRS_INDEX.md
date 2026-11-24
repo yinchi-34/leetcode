@@ -29,6 +29,7 @@ Each section gets one table:
 | [128. Longest Consecutive Sequence](../data-structures/hash-table/0128-longest-consecutive-sequence/summary.md) | Direct | Lemma 1's inner invariant and the outer invariant "`res` is the longest run among processed heads" are each proved by initialization, maintenance, and termination |
 | [453. Minimum Moves to Equal Array Elements (batched simulation)](../Algorithms/simulation/0453-minimum-moves-to-equal-array-elements/batched-simulation/summary.md) | Direct | The batched simulation is proved by the invariants "equal prefix, untouched suffix", through initialization, maintenance, and termination |
 | [3411. Maximum Subarray With Equal Products](../Algorithms/sliding-window/3411-maximum-subarray-with-equal-products/summary.md) | Direct | The invariant "`left` is the left end of the longest pairwise coprime subarray ending at $`r-1`$" is proved by initialization, maintenance, and termination |
+| [54. Spiral Matrix](../Algorithms/simulation/0054-spiral-matrix/summary.md) | Direct | Proves correctness with the outer-loop invariant "the elements not yet output form a nonempty rectangle, and the output so far followed by its spiral order is the answer" in the initialization, maintenance, and termination steps, with a case split over four degenerate shapes: one row, one column, two rows, two columns |
 
 ## Chapter 3 Growth of Functions
 

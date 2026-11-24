@@ -31,6 +31,19 @@ Go slices and Python lists both refer to underlying data, so assignment does not
 - Go's `append` may write into the caller's backing array; Python's `append` only changes that one list.
 - Example: [0462 sorting](../Algorithms/order-statistics/0462-minimum-moves-to-equal-array-elements-ii/sorting/). Go copies by hand, while Python's `sorted()` already returns a new list.
 
+## Range Loops and Backward Iteration
+
+Go's three-clause `for` states its own end condition, so whether the end is inclusive is plain to see. Python's `range(start, stop, step)` excludes `stop`, so a backward range has to move the end one step further out.
+
+| Iteration | Go | Python |
+| --- | --- | --- |
+| Forward `l..r` (both ends included) | `for i := l; i <= r; i++` | `range(l, r + 1)` |
+| Backward `r..l` (both ends included) | `for i := r; i >= l; i--` | `range(r, l - 1, -1)` |
+
+- Both run zero times when the start has already passed the end; neither raises an error.
+- The most common Python mistake is writing `range(r, l, -1)`, which leaves out `l` itself. `range(r, l - 1, -1)` becomes `range(r, -1, -1)` when `l = 0`, so no special case is needed.
+- Example: [0054 Spiral Matrix](../Algorithms/simulation/0054-spiral-matrix/). The bottom row and left column are walked backward, and the four boundary checks sit in the same places in both languages.
+
 ## Hash Tables
 
 - Go randomizes `map` iteration order; Python's `dict` keeps insertion order. Tests must not depend on Go map order.
